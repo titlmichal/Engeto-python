@@ -10,7 +10,10 @@ Poznámky ke kurzu
 - od lektora (Petr Lorenc)
 - na začátku opakování z minule (10 minut)
 - pak vždy 3x (45min nová látka, 5min úkol, 10min pauza)
+- v úkolech se snaží spíš kritizovat, ať máme na čem stavět (pochvala je fajn, ale tolik neposune)
 
 *LEKCE 1 - ÚVOD DO PROGRAMOVÁNÍ*
+
 **1.1 Úvod do programování**
--
+- dneska už jsme na dost vysoké úrovni abstrakce --> nemusíme psát v binárním kódu, ale počítač tomu rozumí i tak (X začátky)
+- repetitivní a nekreativní úkoly je dobré nechat počítači --> programování
