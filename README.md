@@ -1,12 +1,12 @@
-Poznámky ke kurzu
+<h1> Poznámky ke kurzu <h1>
 
-*ÚVOD - 17.1.2024*
+<h2> *ÚVOD - 17.1.2024* <h2>
 - z každé lekce nahrávky na engeto platformě
 - dole pod hodinami/projekty jsou odevzdávárny
 - čas na certifikaci až 10 měsíců - do 17.11.2024
 - kariérní poradenství až od 2. 1/2 kurzu, resp až budeme ready (latest 17.11.2024)
 
-**operations poznámky k úvodu**
+<h3> **operations poznámky k úvodu** <h3>
 - od lektora (Petr Lorenc)
 - na začátku opakování z minule (10 minut)
 - pak vždy 3x (45min nová látka, 5min úkol, 10min pauza)
@@ -23,5 +23,4 @@ Poznámky ke kurzu
 - C je old, ale Python už má taky 32+ y.o. --> prověřen časem
 - btw Kotlin je podobnej Python, jen běží na Jave
 - jak zjistit verzi Pythonu? ___ python --version
-
-<h1> test <h1>
+- v prezentaci *zajímavé* odkazy na obsah instalace Python - např. compiler
