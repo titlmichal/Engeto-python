@@ -6,7 +6,7 @@
 - čas na certifikaci až 10 měsíců - do 17.11.2024
 - kariérní poradenství až od 2. 1/2 kurzu, resp až budeme ready (latest 17.11.2024)
 
-<h3> **operations poznámky k úvodu** <h3>
+**operations poznámky k úvodu**
 - od lektora (Petr Lorenc)
 - na začátku opakování z minule (10 minut)
 - pak vždy 3x (45min nová látka, 5min úkol, 10min pauza)
