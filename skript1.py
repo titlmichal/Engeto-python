@@ -6,4 +6,4 @@ print("made a change v1.1")
 
 print("další print přidán")
 
-print("and another on")
+print("and another one")

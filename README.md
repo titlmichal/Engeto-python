@@ -1,1 +1,2 @@
-Toto je dokumentace prvního skriptu
+Poznámky ke kurzu
+
