@@ -23,3 +23,5 @@ Poznámky ke kurzu
 - C je old, ale Python už má taky 32+ y.o. --> prověřen časem
 - btw Kotlin je podobnej Python, jen běží na Jave
 - jak zjistit verzi Pythonu? ___ python --version
+
+<h1> test <h1>
