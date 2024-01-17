@@ -35,8 +35,10 @@ Poznámky ke kurzu
 - Python zarovnává do bloků (viz PEP 8)
 
 ***Číselné hodnoty/datové typy***
+
 = kufříky, které mají nějaký tvar, který se liší dle toho, co do něj vkládáme
 - python umožňuje do tohoto kufříku dávat čísla i řetězce (líp se píše, hůř identifikuje chyba) --> použití fce type()
 - str() jako řetězec; int() jako celá čísla; float() jako desetinná
 - klasické operátory; navíc to dělení na desetinná čísla / a celá // a modulo % (tj. zbytek po dělení)
 - problém s float (viz platforma, že 0.1+0.2 se nerovná přesně 0.3), řešitelné knihovnou decimal
+- operátory mají nějaké pořadí: jako v matice
