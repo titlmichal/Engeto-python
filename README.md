@@ -29,6 +29,7 @@ Poznámky ke kurzu
 - krom konzole, notepadu, IDEs, ..., lze používat i notebooky - např. jupyternotebook (lokální), Colab od Googlu (web) ad. - interaktivnost konzole, jednoduchost editoru a pomáhá psát jak IDE
 - každý má svoje specifika: třeba notebooky mohou rovnout importovat knihovny, ale zase mají specifické funkce občas, jupyternotebooky háže výsledky hned pod to (takže u *datové analýzy je to hooodně common!*)
 - podle syntaxe sepíšeme kód, sémantika to, jak se to vykoná (jestli jsem dobře slyšel)
-- syntaxe
--- jak položíme ty slova za sebe
--- X sémantika = co tím chci říct
+- syntaxe = jak položíme ty slova za sebe X sémantika = co tím chci říct
+
+*** Syntax ***
+- Python zarovnává do bloků
