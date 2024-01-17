@@ -22,4 +22,4 @@ Poznámky ke kurzu
 - plus taky v Céčku třeba musím program prvně kompilovat X Python je o řád jednodušší (stačí uložit a pustit)
 - C je old, ale Python už má taky 32+ y.o. --> prověřen časem
 - btw Kotlin je podobnej Python, jen běží na Jave
-- jak zjistit verzi Pythonu?            python --version
+- jak zjistit verzi Pythonu? ___ python --version
