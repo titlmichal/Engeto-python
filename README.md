@@ -82,6 +82,9 @@ Poznámky ke kurzu
 
 = vlastně ten kufřík (ne jeho tvar)
 - takže třeba jako:
+
 jmeno = "Michal"
+
 vek = "23"
+
 print(jmeno, vek)
