@@ -24,3 +24,6 @@ Poznámky ke kurzu
 - btw Kotlin je podobnej Python, jen běží na Jave
 - jak zjistit verzi Pythonu? ___ python --version
 - v prezentaci *zajímavé* odkazy na obsah instalace Python - např. compiler
+- interpreter - vezme source file, zkompiluje do byte codu, pošle do virtual machine a pustí se program
+- lze psát program hned do konzole, ale je nutné to mít rozmylšený dopředu, protože program je basically jen postup kroků (takže bych ty kroky musel skládat správně a neudělat v procesu chybu - nemůžu tam skákat)
+- krom konzole, notepadu, IDEs, ..., lze používat i notebooky - např. jupyternotebook (aka Colab od Googlu) - interaktivnost konzole, jednoduchost editoru a pomáhá psát jak IDE
