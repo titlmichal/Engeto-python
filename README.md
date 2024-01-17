@@ -17,3 +17,4 @@ Poznámky ke kurzu
 **1.1 Úvod do programování**
 - dneska už jsme na dost vysoké úrovni abstrakce --> nemusíme psát v binárním kódu, ale počítač tomu rozumí i tak (X začátky)
 - repetitivní a nekreativní úkoly je dobré nechat počítači --> programování
+- python (a třeba SQL) je fajn čitelný ze startu X třeba Céčko už tolik ne (ale zase pak je Céčko rychlejší) X assembler (téměř to nejnižší)
