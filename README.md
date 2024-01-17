@@ -28,8 +28,15 @@ Poznámky ke kurzu
 - lze psát program hned do konzole, ale je nutné to mít rozmylšený dopředu, protože program je basically jen postup kroků (takže bych ty kroky musel skládat správně a neudělat v procesu chybu - nemůžu tam skákat)
 - krom konzole, notepadu, IDEs, ..., lze používat i notebooky - např. jupyternotebook (lokální), Colab od Googlu (web) ad. - interaktivnost konzole, jednoduchost editoru a pomáhá psát jak IDE
 - každý má svoje specifika: třeba notebooky mohou rovnout importovat knihovny, ale zase mají specifické funkce občas, jupyternotebooky háže výsledky hned pod to (takže u *datové analýzy je to hooodně common!*)
-- podle syntaxe sepíšeme kód, sémantika to, jak se to vykoná (jestli jsem dobře slyšel)
 - syntaxe = jak položíme ty slova za sebe X sémantika = co tím chci říct
 
-*** Syntax ***
-- Python zarovnává do bloků
+***Syntax***
+- patří sem ty fce, podmínky, smyčky, ...
+- Python zarovnává do bloků (viz PEP 8)
+
+***Číselné hodnoty/datové typy***
+= kufříky, které mají nějaký tvar, který se liší dle toho, co do něj vkládáme
+- python umožňuje do tohoto kufříku dávat čísla i řetězce (líp se píše, hůř identifikuje chyba) --> použití fce type()
+- str() jako řetězec; int() jako celá čísla; float() jako desetinná
+- klasické operátory; navíc to dělení na desetinná čísla / a celá // a modulo % (tj. zbytek po dělení)
+- problém s float (viz platforma, že 0.1+0.2 se nerovná přesně 0.3), řešitelné knihovnou decimal
