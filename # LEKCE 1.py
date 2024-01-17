@@ -52,3 +52,21 @@ print("\n XXX XXX XXX" * 3)
 jmeno = "Michal"
 vek = "23"
 print(jmeno, vek)
+
+jmeno1 = "Michal" "Titl"
+print(jmeno1)
+
+seznam = ["první", "druhy", "treti"] #list
+print(seznam)
+print(seznam [0:2])
+print(seznam [1])
+seznam [1] = "xty" #LZE měnit hodnoty
+print(seznam)
+
+seznam1 = [["prvni", "druhy", "treti"], [ "CTVRTY", "PATY"]] #tuple
+print(seznam1[0:1])
+print(seznam1[0:2])
+print(seznam1[0:1], seznam1[1:2])
+print(seznam1[1:2])
+print(type(seznam1))
+print(type(tuple(seznam1)))

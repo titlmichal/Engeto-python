@@ -88,3 +88,16 @@ jmeno = "Michal"
 vek = "23"
 
 print(jmeno, vek)
+- lze pouzit různé názvy, ALE nesmí začínat číslem, krom podtržítka žádné special znaky, nesmí mít mezery + je SILNĚ doporučeno se vyhnout názvům už built-in (např. str, int, float, print apod.) klíčový slova (!)
+- plus viz taky tipy v PEP8: např. nepoužívat samotné lko (ještě v combu s Ičkem), velké O (zaměnitelné s 0) atd.
+
+***Řetězce a tuples***
+- datové typy s více hodnotami - sekvenční datové typy (seznam, ntice, rozsah) (list, tuple, range)
+- plus tam funguje zase striding, indexing, slicing a taaaak
+- list = sekvenční datový typ - definovaný [], oddělujeme prvky čárkou, lze měnit obsah
+- lze měnit hodnoty: nazev_list[misto v listu] = "novy prvek"
+- tuple = podobný jak seznam, ale NEmůžu tam měnit hodnoty
+- plus musíme explicitně říct, že chceme dělat tuple --> type(tuple("a"))
+- POZOR: listy/tuples lze vnořovat --> takže když budu mít třeba seznam = [[0], [1]], ... DOPLNIT Z ODPOVÍDAJÍCÍHO JUPYTERU
+
+***ÚKOL DO PŘÍSTĚ NA VYZKOUŠENÍ V JUPYTERU***
