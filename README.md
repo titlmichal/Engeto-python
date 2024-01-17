@@ -38,7 +38,31 @@ Poznámky ke kurzu
 
 = kufříky, které mají nějaký tvar, který se liší dle toho, co do něj vkládáme
 - python umožňuje do tohoto kufříku dávat čísla i řetězce (líp se píše, hůř identifikuje chyba) --> použití fce type()
-- str() jako řetězec; int() jako celá čísla; float() jako desetinná
+- int() jako celá čísla; float() jako desetinná
 - klasické operátory; navíc to dělení na desetinná čísla / a celá // a modulo % (tj. zbytek po dělení)
 - problém s float (viz platforma, že 0.1+0.2 se nerovná přesně 0.3), řešitelné knihovnou decimal
-- operátory mají nějaké pořadí: jako v matice
+- operátory mají nějaké pořadí: jako v matice, ale násobení je před dělením a sčítání před odčítáním, násobení před dělením
+- v Pythonu je dobré být explictní, než implicitní = používat závorky, jak se má, neházet je zbytečně apod.
+- python nechce ztrácet přesnost --> operace int a float má za výsledek float
+- lze přetypovat pomocí stejnojmenných fcí
+
+***Textové hodnoty***
+
+= kufřík na znaky
+- str() jako řetězec
+- můžu tam hodit v podstatě jakýkoliv znak
+- 4 způsoby jak napsat string: 1 nebo 3 na začátku a konci + jednoduché nebo dvojité uvozovky
+- když chci použít uvozovky v tom výsledku, tak: 
+    1) použít druhý druh uvozovek
+    2) přidat před uvozovku zpětné lomítko \
+- máme nějaký special znaky a písmenka (pro nový řádek, tabulátor apod)
+- lze taky sčítat, ale zřetězí je to
+- NEchceme míchat datové typy (!)
+- desetinná je v Python tečka, ne čárka
+
+***Zabudované funkce***
+- print
+- help
+- dir
+- input
+- ... a další
