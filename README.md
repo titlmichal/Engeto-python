@@ -62,7 +62,26 @@ Poznámky ke kurzu
 
 ***Zabudované funkce***
 - print
-- help
-- dir
+- help (podobněj jako dir --> help(nazev objektu))
+- dir (to je dobrý, když dám jako print(dir(nazev objektu), tak mi to hodí možnosti, co s tím dělat))
 - input
 - ... a další
+
+***Možnosti formátování stringu***
+- spojování, opakování, indexování, slicing, striding + další
+- indexování: print("Text"[parametr])
+- odpředu od 0 po počet znaků minus 1
+- odzadu se začíná -1 do -1 minus počet znaku
+- slicing: print("text"[parametr:parametr])
+- počítání jak u indexování, ale místo výběru vysekávám výsek --> [0:4] budou znaky na pozici 0, 1, 2, 3, 4; klidně může být třeba [5:10] nebo [5:] --> to bude od 5. pozice do konce
+- striding: nechceme každý číslo ve výběru, ale třeba každý druhý --> např. [1:8:2] = od 1. do 8. pozice, každá 2. pozice
+- když se dá ve stridingu negativní číslo --> jde se od konce
+- ... obecně první číslo = kde začnu; druhé číslo = kde končím; třetí číslo = jak procházím string
+
+***Proměnná***
+
+= vlastně ten kufřík (ne jeho tvar)
+- takže třeba jako:
+jmeno = "Michal"
+vek = "23"
+print(jmeno, vek)
