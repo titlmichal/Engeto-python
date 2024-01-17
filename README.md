@@ -1,4 +1,4 @@
-<h1> Poznámky ke kurzu <h1>
+Poznámky ke kurzu
 
 *ÚVOD - 17.1.2024* 
 - z každé lekce nahrávky na engeto platformě
