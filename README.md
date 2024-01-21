@@ -1,6 +1,6 @@
-<h1> Poznámky ke kurzu< /h1>
+<h1> Poznámky ke kurzu </h1>
 
-<h2> *ÚVOD - 17.1.2024* </h2>
+<h2> ÚVOD - 17.1.2024 </h2>
 - z každé lekce nahrávky na engeto platformě
 - dole pod hodinami/projekty jsou odevzdávárny
 - čas na certifikaci až 10 měsíců - do 17.11.2024
@@ -13,7 +13,7 @@
 - v úkolech se snaží spíš kritizovat, ať máme na čem stavět (pochvala je fajn, ale tolik neposune)
 - PDF Jupyternotebooků bude u lekcí na platformě jako odkaz na Gdrive
 
-*LEKCE 1 - ÚVOD DO PROGRAMOVÁNÍ*
+<h2> LEKCE 1 - ÚVOD DO PROGRAMOVÁNÍ </h2>
 
 - dneska už jsme na dost vysoké úrovni abstrakce --> nemusíme psát v binárním kódu, ale počítač tomu rozumí i tak (X začátky)
 - repetitivní a nekreativní úkoly je dobré nechat počítači --> programování
@@ -30,6 +30,7 @@
 - syntaxe = jak položíme ty slova za sebe X sémantika = co tím chci říct
 
 <h3> Syntax </h3>
+
 - patří sem ty fce, podmínky, smyčky, ...
 - Python zarovnává do bloků (viz PEP 8)
 
@@ -60,6 +61,7 @@
 - desetinná je v Python tečka, ne čárka
 
 <h3> Zabudované funkce </h3>
+
 - print
 - help (podobněj jako dir --> help(nazev objektu))
 - dir (to je dobrý, když dám jako print(dir(nazev objektu), tak mi to hodí možnosti, co s tím dělat))
@@ -67,6 +69,7 @@
 - ... a další
 
 <h3> Možnosti formátování stringu </h3>
+
 - spojování, opakování, indexování, slicing, striding + další
 - indexování: print("Text"[parametr])
 - odpředu od 0 po počet znaků minus 1
@@ -77,7 +80,7 @@
 - když se dá ve stridingu negativní číslo --> jde se od konce
 - ... obecně první číslo = kde začnu; druhé číslo = kde končím; třetí číslo = jak procházím string
 
-<h3> Proměnná***
+<h3> Proměnná </h3>
 
 = vlastně ten kufřík (ne jeho tvar)
 - takže třeba jako:
@@ -90,7 +93,8 @@ print(jmeno, vek)
 - lze pouzit různé názvy, ALE nesmí začínat číslem, krom podtržítka žádné special znaky, nesmí mít mezery + je SILNĚ doporučeno se vyhnout názvům už built-in (např. str, int, float, print apod.) klíčový slova (!)
 - plus viz taky tipy v PEP8: např. nepoužívat samotné lko (ještě v combu s Ičkem), velké O (zaměnitelné s 0) atd.
 
-<h3> Řetězce a tuples***
+<h3> Řetězce a tuples </h3>
+
 - datové typy s více hodnotami - sekvenční datové typy (seznam, ntice, rozsah) (list, tuple, range)
 - plus tam funguje zase striding, indexing, slicing a taaaak
 - list = sekvenční datový typ - definovaný [], oddělujeme prvky čárkou, lze měnit obsah
