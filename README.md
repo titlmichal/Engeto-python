@@ -1,6 +1,6 @@
-Poznámky ke kurzu
+<h1> Poznámky ke kurzu< /h1>
 
-*ÚVOD - 17.1.2024* 
+<h2> *ÚVOD - 17.1.2024* </h2>
 - z každé lekce nahrávky na engeto platformě
 - dole pod hodinami/projekty jsou odevzdávárny
 - čas na certifikaci až 10 měsíců - do 17.11.2024
@@ -15,7 +15,6 @@ Poznámky ke kurzu
 
 *LEKCE 1 - ÚVOD DO PROGRAMOVÁNÍ*
 
-**1.1 Úvod do programování**
 - dneska už jsme na dost vysoké úrovni abstrakce --> nemusíme psát v binárním kódu, ale počítač tomu rozumí i tak (X začátky)
 - repetitivní a nekreativní úkoly je dobré nechat počítači --> programování
 - python (a třeba SQL) je fajn čitelný ze startu X třeba Céčko už tolik ne (ale zase pak je Céčko rychlejší) X assembler (téměř to nejnižší)
@@ -30,11 +29,11 @@ Poznámky ke kurzu
 - každý má svoje specifika: třeba notebooky mohou rovnout importovat knihovny, ale zase mají specifické funkce občas, jupyternotebooky háže výsledky hned pod to (takže u *datové analýzy je to hooodně common!*)
 - syntaxe = jak položíme ty slova za sebe X sémantika = co tím chci říct
 
-***Syntax***
+<h3> Syntax </h3>
 - patří sem ty fce, podmínky, smyčky, ...
 - Python zarovnává do bloků (viz PEP 8)
 
-***Číselné hodnoty/datové typy***
+<h3> Číselné hodnoty/datové typy </h3>
 
 = kufříky, které mají nějaký tvar, který se liší dle toho, co do něj vkládáme
 - python umožňuje do tohoto kufříku dávat čísla i řetězce (líp se píše, hůř identifikuje chyba) --> použití fce type()
@@ -46,7 +45,7 @@ Poznámky ke kurzu
 - python nechce ztrácet přesnost --> operace int a float má za výsledek float
 - lze přetypovat pomocí stejnojmenných fcí
 
-***Textové hodnoty***
+<h3> Textové hodnoty </h3>
 
 = kufřík na znaky
 - str() jako řetězec
@@ -60,14 +59,14 @@ Poznámky ke kurzu
 - NEchceme míchat datové typy (!)
 - desetinná je v Python tečka, ne čárka
 
-***Zabudované funkce***
+<h3> Zabudované funkce </h3>
 - print
 - help (podobněj jako dir --> help(nazev objektu))
 - dir (to je dobrý, když dám jako print(dir(nazev objektu), tak mi to hodí možnosti, co s tím dělat))
 - input
 - ... a další
 
-***Možnosti formátování stringu***
+<h3> Možnosti formátování stringu </h3>
 - spojování, opakování, indexování, slicing, striding + další
 - indexování: print("Text"[parametr])
 - odpředu od 0 po počet znaků minus 1
@@ -78,7 +77,7 @@ Poznámky ke kurzu
 - když se dá ve stridingu negativní číslo --> jde se od konce
 - ... obecně první číslo = kde začnu; druhé číslo = kde končím; třetí číslo = jak procházím string
 
-***Proměnná***
+<h3> Proměnná***
 
 = vlastně ten kufřík (ne jeho tvar)
 - takže třeba jako:
@@ -91,7 +90,7 @@ print(jmeno, vek)
 - lze pouzit různé názvy, ALE nesmí začínat číslem, krom podtržítka žádné special znaky, nesmí mít mezery + je SILNĚ doporučeno se vyhnout názvům už built-in (např. str, int, float, print apod.) klíčový slova (!)
 - plus viz taky tipy v PEP8: např. nepoužívat samotné lko (ještě v combu s Ičkem), velké O (zaměnitelné s 0) atd.
 
-***Řetězce a tuples***
+<h3> Řetězce a tuples***
 - datové typy s více hodnotami - sekvenční datové typy (seznam, ntice, rozsah) (list, tuple, range)
 - plus tam funguje zase striding, indexing, slicing a taaaak
 - list = sekvenční datový typ - definovaný [], oddělujeme prvky čárkou, lze měnit obsah
@@ -102,4 +101,6 @@ print(jmeno, vek)
 
 ***ÚKOL DO PŘÍSTĚ NA VYZKOUŠENÍ V JUPYTERU***
 
-*LEKCE 2 - Podmínky a metody*
+<h2> LEKCE 2 - Podmínky a metody (24.1.2024) </h2>
+
+<h3> Boolean </h3>
