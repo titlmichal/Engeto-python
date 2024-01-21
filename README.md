@@ -108,3 +108,28 @@ print(jmeno, vek)
 <h2> LEKCE 2 - Podmínky a metody (24.1.2024) </h2>
 
 <h3> Boolean </h3>
+
+- příp. bool
+- o pravdivosti (TRUE X FALSE)
+-   true je basically 1, false 0 --> boolean je basically special case integer
+- funkce bool jako rozhodčí --> print(bool(....)), i když to bool tam být asi nemusí, záleží prý
+
+<h3> Srovnávání </h3>
+
+- často u těch booleanů
+- > < >= <= == (rovná se) != (nerovná se) is (je totožné) is not (různá objektová identita)
+
+<h3> Boolean procesy </h3>
+
+- všechno je objekt v Pythonu
+- --> vše má své označení (lze zjistit pomocí fce id)
+-   identické hodnoty = stejné číslo, tedy adresu objektu v paměti PC
+- mají své operátory: and, or not
+-   and: např. True and True (výsledek True) ... jakmile by viděl False --> výsledek False
+-   plus *zkrácené vyhodnocení* - vidí False na další se už ani nepodívá
+-   or: stačí jeden True a je to celé True
+-   not: dává se jednomu objektu a obrací hodnotu True --> False X False --> True
+- *pořadí vyhodnocování*: not --> and --> or
+- ověřování členství
+-   zda je něco v něčem - např. ("M" in "Michal"), nebo není --> ("M" not in "Brno") ... oboje True
+-   btw stejná skupina funkce jako slicing, indexing, striding, ...
