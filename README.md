@@ -50,7 +50,7 @@ Poznámky ke kurzu
 
 = kufřík na znaky
 - str() jako řetězec
-- můžu tam hodit v podstatě jakýkoliv znak
+- můžu tam hodit v podstatě jakýkoliv znak, ALE pak už NELZE měnit!
 - 4 způsoby jak napsat string: 1 nebo 3 na začátku a konci + jednoduché nebo dvojité uvozovky
 - když chci použít uvozovky v tom výsledku, tak: 
     1) použít druhý druh uvozovek
@@ -101,3 +101,5 @@ print(jmeno, vek)
 - POZOR: listy/tuples lze vnořovat --> takže když budu mít třeba seznam = [[0], [1]], ... DOPLNIT Z ODPOVÍDAJÍCÍHO JUPYTERU
 
 ***ÚKOL DO PŘÍSTĚ NA VYZKOUŠENÍ V JUPYTERU***
+
+*LEKCE 2 - Podmínky a metody*
