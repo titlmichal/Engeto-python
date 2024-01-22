@@ -53,3 +53,11 @@ print("Na indexu 2 je:", zamestnanci[2])
 print("Na", posledni_index, "indexu je:", zamestnanci[-1])
 print("V intervalu od 2 do 5 je:", zamestnanci[2:6])
 print("Každý třetí člen je:", zamestnanci[::3])
+
+#PODMÍNKY
+moje_jmeno = input("Zadejte jmeno ")
+if moje_jmeno == "Michal":
+    print("Ahoj, Michale")
+else:
+    print("Ahoj, ostatní, kteří se nejmenujete Michal!")
+print(bool(moje_jmeno == "Michal"))

@@ -133,3 +133,18 @@ print(jmeno, vek)
 - ověřování členství
 -   zda je něco v něčem - např. ("M" in "Michal"), nebo není --> ("M" not in "Brno") ... oboje True
 -   btw stejná skupina funkce jako slicing, indexing, striding, ...
+
+<h3> Podmínky </h3>
+
+<h4> Jednoduchý podmínkový zápis </h4>
+
+- rozhodování pomocí boolean hodnot --> je či není pravdivý
+- potřeba podmínkového zápisu: if něco je TRUE má se stát (např. if jmeno == "Michal": print("Ahoj, Michale"))
+- musí tam být to if, dvojtečka i odsazení za dvojtečkou na novém řádku
+- když je to FALSE --> nic se nestane (z toho odsazeného
+- if lze kombinovat s else --> za konec původního přidám else: print("Ahoj, ostatní))
+- else se aktivuje, když je FALSE
+
+<h4> Rozvinutý podmínkový zápis </h4>
+
+-
