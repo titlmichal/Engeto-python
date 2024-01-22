@@ -41,6 +41,8 @@ print(not False) #TRUE
 print("M" in "Michal") #TRUE
 print("#" in "Michal") #FALSE
 print("x" not in "Michal") #TRUE
+
+#CVIČENÍ 1
 print("="*15, "Cvičení 1 - List, indexování", "="*15)
 zamestnanci = [
     'František', 'Bruno',
@@ -58,6 +60,38 @@ print("Každý třetí člen je:", zamestnanci[::3])
 moje_jmeno = input("Zadejte jmeno ")
 if moje_jmeno == "Michal":
     print("Ahoj, Michale")
+elif moje_jmeno == "Tom":
+    print("Ahoj, Tome")
+elif moje_jmeno == "David":
+    print("Ahoj, Davide")
+elif moje_jmeno == "Jony":
+    print("Ahoj, Jony")
 else:
-    print("Ahoj, ostatní, kteří se nejmenujete Michal!")
+    print("Ahoj,", moje_jmeno, "e.")
 print(bool(moje_jmeno == "Michal"))
+
+tvoje_jmeno = input("Jak se jmenuješ? ")
+tvuj_vek = float(input("Kolik ti je? "))
+if tvuj_vek >= 18 and tvoje_jmeno == "Michal":
+    print("Toooop, Michale, dám pivko")
+elif tvuj_vek >= 18:
+    print("Top, dáme pivko", tvoje_jmeno, "e")
+elif tvoje_jmeno == "Michal" and tvuj_vek <18:
+    print("Nene, Michale, ty ještě nemůžeš")
+else:
+    print("nedáme pivko :(((")
+
+#ternární operátor: alternativní způsob
+print("Ahoj, Michale") if tvoje_jmeno == "Michal" else print("Ahoj, ostatni")
+
+#CVIČENÍ 2
+print("="*15, "Cvičení 2 - Palindrom", "="*15)
+zadana_slova = ["jaro", "jej", "kolo", "aha"]
+slovo = zadana_slova[1]
+if slovo[::-1] == slovo:
+    print("Slovo", slovo, "je palindrom!")
+else:
+    print("Slovo", slovo, "není palindrom!")
+
+#CVIČENÍ 3
+print("="*15, "Cvičení 3 - BMI kalkulačka", "="*15)

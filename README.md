@@ -128,7 +128,7 @@ print(jmeno, vek)
 -   and: např. True and True (výsledek True) ... jakmile by viděl False --> výsledek False
 -   plus *zkrácené vyhodnocení* - vidí False na další se už ani nepodívá
 -   or: stačí jeden True a je to celé True
--   not: dává se jednomu objektu a obrací hodnotu True --> False X False --> True
+-   not: dává se jednomu objektu a obrací hodnotu True --> False NEBO False --> True
 - *pořadí vyhodnocování*: not --> and --> or
 - ověřování členství
 -   zda je něco v něčem - např. ("M" in "Michal"), nebo není --> ("M" not in "Brno") ... oboje True
@@ -147,4 +147,17 @@ print(jmeno, vek)
 
 <h4> Rozvinutý podmínkový zápis </h4>
 
--
+- if/elif/else --> když chci 3 a víc větví, kterými se lze vydat
+- elif je kombo obojího: dává se tam podmínka, co má být TRUE, a výsledek, když bude TRUE + nastává, když if není TRUE
+- ale elif může být kolik chci (!)
+- pořadí: if - elif - ... - else
+- elif se spustí, když je if FALSE
+
+
+- podmínky lze samozřejmě doplňovat o boolean operátory: and, or, not
+- každopádně to musí být TRUE, aby se spustil odpovídající příkaz --> platí výsledky kombinací True a False dle výše
+- existuje nějako ternární operátor: alternativní způsob zápisu podmínky buď anebo ---> X if Y else Z
+- např.
+jmeno == "Michal"
+print("Ahoj, Michale) if jmeno == "Michal" else print("ahoj, ostatni)
+- můžu ale používat to "klasické"
