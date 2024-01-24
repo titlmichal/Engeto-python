@@ -134,7 +134,7 @@ print(jmeno, vek)
 - > < >= <= == (rovná se) != (nerovná se) is (je totožné) is not (různá objektová identita)
 - (!) == rovná se se používá pro testování rovnosti X = rovná se se používá k přiřazování hodnot
 
-<h4> Boolean procesy </h4>
+<h4> Objekty/id </h4>
 
 - všechno je objekt v Pythonu
 - --> vše má své označení (lze zjistit pomocí fce id)
@@ -143,18 +143,29 @@ print(jmeno, vek)
 -   ALE pokud budou na začáku jiné a pak se změní, aby byl stejné, tak je *třeba použít == místo is, aby to řešilo obsah, ne adresu!*
 - *--> is řeší adresu, == řeší obsah*
 
+<h4> Operátory </h4>
+
 - mají své operátory: and, or not
 -   and: např. True and True (výsledek True) ... jakmile by viděl False --> výsledek False
--   plus *zkrácené vyhodnocení* - vidí False na další se už ani nepodívá
+-   plus *zkrácené vyhodnocení* - vidí False a na další se už ani nepodívá
 -   or: stačí jeden True a je to celé True
 -   not: dává se jednomu objektu a obrací hodnotu True --> False NEBO False --> True
 - *pořadí vyhodnocování*: not --> and --> or (ALE na hodině říkali z leva do prava?!?!?!?!)
 
-- ověřování členství (membership testing)
+<h4> Zkrácené vyhodnocení </h4>
+
+- u or jakmile bude to první True, tak se to vezme
+- u and si tím ušetřím zase psaní kódu - nejčastěji se používá u prvků z polí (listů/tuplů)
+- asi to není tak důležitý, ale měl bych si to checknout
+
+<h4> Ověřování členství </h4>
+
 -   zda je něco v něčem - např. ("M" in "Michal"), nebo není --> ("M" not in "Brno") ... oboje True
 -   používá se k tomu in, popřípadě not in
 -   testuje přesnou shodu ("m" in "Michal" bude False)
 -   btw stejná skupina funkce jako slicing, indexing, striding, ...
+
+<h4> Vyhodnocování booleanů </h4>
 
 - *vyhodnocování* (když je tam fce bool předtím) probíhá dle toho převodu True na 1 a False 0
 -   --> např. True + False = True, protože 1 + 0 = 1
@@ -169,11 +180,23 @@ print(jmeno, vek)
 <h4> Jednoduchý podmínkový zápis </h4>
 
 - rozhodování pomocí boolean hodnot --> je či není pravdivý
-- potřeba podmínkového zápisu: if něco je TRUE má se stát (např. if jmeno == "Michal": print("Ahoj, Michale"))
+- potřeba podmínkového zápisu: if něco je TRUE: má se stát (např. if jmeno == "Michal":    print("Ahoj, Michale"))
 - musí tam být to if, dvojtečka i odsazení za dvojtečkou na novém řádku
+- to odsazení je důležitý, je to součást syntaxu, bez toho se to rozpadne a hodí error
 - když je to FALSE --> nic se nestane (z toho odsazeného
 - if lze kombinovat s else --> za konec původního přidám else: print("Ahoj, ostatní))
-- else se aktivuje, když je FALSE
+- else se aktivuje, když je podmínka FALSE
+- jde to kombinovat do více vrstev, např.: 
+if 
+____if
+____else
+else
+____if
+________if
+________else
+____else
+
+- POZOR na víc if po sobě --> když bude platit jedno i druhý (případě prostě ty další), tak se vykonají všechny (!)
 
 <h4> Rozvinutý podmínkový zápis </h4>
 
@@ -181,23 +204,32 @@ print(jmeno, vek)
 - elif je kombo obojího: dává se tam podmínka, co má být TRUE, a výsledek, když bude TRUE + nastává, když if není TRUE
 - ale elif může být kolik chci (!)
 - pořadí: if - elif - ... - else
-- elif se spustí, když je if FALSE
-
-
+- elif se spustí, když je if FALSE --> další elif nebo else se už nevykoná (kdežto další if by se vykonalo, pokud by platilo)
+- prostě v tom chainu if - elif - ... - else jakmile dojde k pravdě, tak se vykoná a další se už neřeší
 - podmínky lze samozřejmě doplňovat o boolean operátory: and, or, not
 - každopádně to musí být TRUE, aby se spustil odpovídající příkaz --> platí výsledky kombinací True a False dle výše
+
+<h4> Ternární operátor </h4>
+
 - existuje nějako ternární operátor: alternativní způsob zápisu podmínky buď anebo ---> X if Y else Z
 - např.
 jmeno == "Michal"
 print("Ahoj, Michale) if jmeno == "Michal" else print("ahoj, ostatni)
+- je to asi úspornější na řádky (klasická alternativa výše popsaného by měla 5 řádků místo 2), ale na komplikované věci to bude asi nepřehledné
+- plus možná je to logičtější ("vytiskni Ahoj Michale, pokud je jméno Michal, jinak ... X pokud je jméno michal, vytiskni ..., jinak, ...)
 - můžu ale používat to "klasické"
 
 <h3> Metody </h3>
 
-- = jakoby fce zaměřené na konkrétní datový typ (str, list apod.)
+- = jakoby fce zaměřené na konkrétní datový typ (str, list apod.) X fce jsou sdílené mezi datovými typy
 - např. pro print stringů: print("michal".upper()) --> vše caps lockem
 - --> zápis je: objekt.metoda(argumenty)
+- --> MUSÍ se to volat na nějaký OBJEKT
 - je jich spousty (pro stringy): capitalize, casefold, center, count, find, format, isalnum, isaplha, isdigit, join, ljust, replace, split, zfill)
 - ale i pro listy: append, clear, copy, copy, count, extend, index, insert, pop, remove, reverse, sort
 - u tuplů možná míň: count, index
-- nic není ale vyčerpávající asi
+- nic z těch výpisů není ale vyčerpávající asi
+- můžu si je všechny zavolat např. skrze help(datovy_typ), print(dir(str)) nebo OBECNĚ help(datovy_typ.nazev_metody) ... nebo místo str dát list, tuple, int, ... každý datový typ má své metody
+- obecně je dobré si to projít skrz ten help
+
+***V JUPYTERU JE ÚKOL NA ROZLOUČENOU (co má/nemá heslo obsahovat) - UDĚLAT!***

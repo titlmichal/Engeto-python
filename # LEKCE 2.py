@@ -55,6 +55,14 @@ print(bool(None)) #False --> None = absence hodnoty
 print(id(1))
 print(id("1"))
 
+#CVIČENÍ V HODINĚ - počítadlo unikátních samohlásek
+samohlaskove_slovo = input("Zadej slovo, kde chceš znát počet unikátních samohlásek:")
+print(int("a" in samohlaskove_slovo) 
+      + int("e" in samohlaskove_slovo) 
+      + int("i" in samohlaskove_slovo) 
+      + int("u" in samohlaskove_slovo) 
+      + int("o" in samohlaskove_slovo))
+
 #CVIČENÍ 1
 print("="*15, "Cvičení 1 - List, indexování", "="*15)
 zamestnanci = [
@@ -94,6 +102,32 @@ elif tvoje_jmeno == "Michal" and tvuj_vek <18:
 else:
     print("nedáme pivko :(((")
 
+#CVIČENÍ V HODINĚ - průměr tříd
+#Ve třídě je X studentů. Každů z nich dostal vyhodnocení testu a tvým úkolem je zjistit jaký je průměr třídy. 
+#Pokud je průmer mezi 1 až 2 tak třídu pochválit, pokud mezi 2 až 4 tak konstatovat, že je to normělní protože Gauss. 
+#A pokud horší než 4 tak je poslat všechny na doučování.
+#Známky třídy 9A: 3,4,1,2,3,4,1,2,3,1,1,2,4
+#Známky třídy 9B: 1,1,2,1,5,5,4,1,5,1,2,4,2,1,3,4
+trida_a = (3,4,1,2,3,4,1,2,3,1,1,2,4)
+trida_b = (1,1,2,1,5,5,4,1,5,1,2,4,2,1,3,4)
+prumer_a = sum(trida_a)/len(trida_a)
+prumer_b = sum(trida_b)/len(trida_b)
+if prumer_a <= 2:
+    print("Chválím třídu A")
+elif prumer_a <= 4:
+    print("To je normální, třído A, to je Gauss")
+else:
+    print("Třída A na doučování!")
+
+if prumer_b <= 2:
+    print("Chválím třídu B")
+elif prumer_b <= 4:
+    print("To je normální, třído B, to je Gauss")
+else:
+    print("Třída B na doučování!")
+
+
+
 #ternární operátor: alternativní způsob
 print("Ahoj, Michale") if tvoje_jmeno == "Michal" else print("Ahoj, ostatni")
 
@@ -118,6 +152,7 @@ print("michal".title()) #první velké
 print("Michal".index("a")) #najde index pro a
 print("Michal".replace("a", "@")) #nahradí @ za a
 print("MICHAL".isupper()) #boolean zda je vše velké?
+print("Ahoj, jak se máš?".split()) #rozseká string na dílky
 
 #pro listy
 seznam1 = ["a", "b", "c"]
