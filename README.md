@@ -103,36 +103,66 @@ print(jmeno, vek)
 - plus musíme explicitně říct, že chceme dělat tuple --> type(tuple("a"))
 - POZOR: listy/tuples lze vnořovat --> takže když budu mít třeba seznam = [[0], [1]], ... DOPLNIT Z ODPOVÍDAJÍCÍHO JUPYTERU
 
-***ÚKOL DO PŘÍSTĚ NA VYZKOUŠENÍ V JUPYTERU***
+***ÚKOL DO PŘÍSTĚ NA VYZKOUŠENÍ V JUPYTERU - hotovo, viz soubor s kódem***
 
 <h2> LEKCE 2 - Podmínky a metody (24.1.2024) </h2>
 
+<h3> opakování z minula </h3>
+
+- trojité uvozovky odpovídají vícřádkovému zápisu; třeba místo \n text \n
+- objekt[:] = objekt [::]
+- objekt[::-2] --> každý druhý ale od konce
+- objekt[::-1] --> každý první od konce --> pozpátku
+- krom objektu/řetezce tam může být list i ten tupl žejo
+- POZOR NA TOTO: 
+-   "Lorem imsum dolor sit amet"[0:5:-2] = [] protože už [0] je to méně než zarážka 5
+-   "Lorem imsum dolor sit amet"[5:0:-2] = [5, 5-2, 5-4] ale už ne [5-6] protože je to méně než zarážka 0
+- POZOR taky na tvorbu kopií objektů ve stylu pole = kopie --> když změním jedno, změní se zbytek --> lepší pole = kopie.copy()
+
 <h3> Boolean </h3>
 
+- pro řešení podmínek, je potřeba znát boolean
 - příp. bool
 - o pravdivosti (TRUE X FALSE)
--   true je basically 1, false 0 --> boolean je basically special case integer
+-   true je basically 1, false 0 --> boolean je basically special case integer (tj. taky datový typ)
 - funkce bool jako rozhodčí --> print(bool(....)), i když to bool tam být asi nemusí, záleží prý
+- plus de facto převádí 1 a 0 na True nebo False, resp 0 --> False, vše co není 0 --> True
 
-<h3> Srovnávání </h3>
+<h4> Srovnávání </h4>
 
 - často u těch booleanů
 - > < >= <= == (rovná se) != (nerovná se) is (je totožné) is not (různá objektová identita)
+- (!) == rovná se se používá pro testování rovnosti X = rovná se se používá k přiřazování hodnot
 
-<h3> Boolean procesy </h3>
+<h4> Boolean procesy </h4>
 
 - všechno je objekt v Pythonu
 - --> vše má své označení (lze zjistit pomocí fce id)
 -   identické hodnoty = stejné číslo, tedy adresu objektu v paměti PC
+-   platí to i pro proměnné, které vznikly spolu: např. promenna1 = "Holinka" promenna2 = "Holinka" --> promenna1 == promenna2 bude True
+-   ALE pokud budou na začáku jiné a pak se změní, aby byl stejné, tak je *třeba použít == místo is, aby to řešilo obsah, ne adresu!*
+- *--> is řeší adresu, == řeší obsah*
+
 - mají své operátory: and, or not
 -   and: např. True and True (výsledek True) ... jakmile by viděl False --> výsledek False
 -   plus *zkrácené vyhodnocení* - vidí False na další se už ani nepodívá
 -   or: stačí jeden True a je to celé True
 -   not: dává se jednomu objektu a obrací hodnotu True --> False NEBO False --> True
-- *pořadí vyhodnocování*: not --> and --> or
-- ověřování členství
+- *pořadí vyhodnocování*: not --> and --> or (ALE na hodině říkali z leva do prava?!?!?!?!)
+
+- ověřování členství (membership testing)
 -   zda je něco v něčem - např. ("M" in "Michal"), nebo není --> ("M" not in "Brno") ... oboje True
+-   používá se k tomu in, popřípadě not in
+-   testuje přesnou shodu ("m" in "Michal" bude False)
 -   btw stejná skupina funkce jako slicing, indexing, striding, ...
+
+- *vyhodnocování* (když je tam fce bool předtím) probíhá dle toho převodu True na 1 a False 0
+-   --> např. True + False = True, protože 1 + 0 = 1
+-   --> např. True - False = True, protože 1 - 0 = 1
+-   --> POZOR že když není tam to bool, tak to převede a např. True + True nebude True ale 2 (!)
+- bool stringů --> bool("a"), bool("0"), bool(" ") ... všecno je true, protože je nenulový (ale bool("") už bude False)
+- None = absence hodnoty (není to definované, chybí, ..., jinde aka Null, NaN apod.)
+-   např. seznam = [] není to stejné jako seznam = None (!!!)
 
 <h3> Podmínky </h3>
 
@@ -161,3 +191,13 @@ print(jmeno, vek)
 jmeno == "Michal"
 print("Ahoj, Michale) if jmeno == "Michal" else print("ahoj, ostatni)
 - můžu ale používat to "klasické"
+
+<h3> Metody </h3>
+
+- = jakoby fce zaměřené na konkrétní datový typ (str, list apod.)
+- např. pro print stringů: print("michal".upper()) --> vše caps lockem
+- --> zápis je: objekt.metoda(argumenty)
+- je jich spousty (pro stringy): capitalize, casefold, center, count, find, format, isalnum, isaplha, isdigit, join, ljust, replace, split, zfill)
+- ale i pro listy: append, clear, copy, copy, count, extend, index, insert, pop, remove, reverse, sort
+- u tuplů možná míň: count, index
+- nic není ale vyčerpávající asi

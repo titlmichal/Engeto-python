@@ -42,6 +42,19 @@ print("M" in "Michal") #TRUE
 print("#" in "Michal") #FALSE
 print("x" not in "Michal") #TRUE
 
+
+print("="*15, "Věci z hodiny", "="*15)
+print(bool(True - True)) #False
+print(bool(True - False)) #True
+print(bool("")) #False
+print(bool(" ")) #True
+print(bool("0")) #True
+print(bool(False,)) #False --> je to False a nic víc
+print(bool((False,))) #True --> je tam nenulový tuple
+print(bool(None)) #False --> None = absence hodnoty
+print(id(1))
+print(id("1"))
+
 #CVIČENÍ 1
 print("="*15, "Cvičení 1 - List, indexování", "="*15)
 zamestnanci = [
@@ -95,3 +108,32 @@ else:
 
 #CVIČENÍ 3
 print("="*15, "Cvičení 3 - BMI kalkulačka", "="*15)
+#DOKONČIT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+#METODY
+
+#pro stringy
+print("michal".upper()) #vše velké
+print("michal".title()) #první velké
+print("Michal".index("a")) #najde index pro a
+print("Michal".replace("a", "@")) #nahradí @ za a
+print("MICHAL".isupper()) #boolean zda je vše velké?
+
+#pro listy
+seznam1 = ["a", "b", "c"]
+seznam1.append("X") #přidá do listu X
+print(seznam1)
+
+print(seznam1.count("a")) #kolik "a" obsahuje list
+print([1, 1, 1].count(1))
+
+seznam2 = ["b", "d", "c", "a"]
+seznam2.sort() #seřadí objekty v listu
+print(seznam2)
+
+#pro tuply
+print((1, 2, 2, 2, 5).count(2)) #kolik je 2 v tuplu
+
+print(("a", "b", "b", "c").index("c")) #na jakém indexu je "c"
+
+#UDĚLAT CVIČENÍ PRO METODY!!!!
