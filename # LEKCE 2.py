@@ -142,7 +142,21 @@ else:
 
 #CVIČENÍ 3
 print("="*15, "Cvičení 3 - BMI kalkulačka", "="*15)
-#DOKONČIT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+jmeno = "Martin"
+vaha = 80
+vyska = 2
+bmi = vaha/(vyska**2)
+if bmi < 18.5:
+    kategorie = "podvýživa."
+elif bmi < 25:
+    kategorie = "zdravá váha."
+elif bmi < 30:
+    kategorie = "mírná nadváha."
+elif bmi < 40:
+    kategorie = "obezita."
+else:
+    kategorie = "těžka obezita."
+print(jmeno, "tvé BMI je", bmi, ", což spadá do kategorie", kategorie)
 
 #METODY
 
@@ -171,4 +185,79 @@ print((1, 2, 2, 2, 5).count(2)) #kolik je 2 v tuplu
 
 print(("a", "b", "b", "c").index("c")) #na jakém indexu je "c"
 
-#UDĚLAT CVIČENÍ PRO METODY!!!!
+#CVIČENÍ 4 - delka stringu
+print("="*15, "Cvičení 4 - Délka stringu", "="*15)
+zadana_slova = ["Matous", "Martin", "ahoj","er", "es", "i", "a"]
+slovo = zadana_slova[5]
+delka_slova = len(slovo)
+if delka_slova >= 4:
+    print(slovo, "počet znaků:", delka_slova)
+elif delka_slova > 1:
+    print(slovo, "počet znaků:", delka_slova)
+else:
+    print(slovo, "počet znaků:", delka_slova)
+
+#CVIČENÍ 5
+print("="*15, "Cvičení 5 - List, přidávání hodnot", "="*15)
+zamestnanci = ["František", "Anna", "Jakub", "Klára"]
+print("Zaměstnanci na začátku: ", zamestnanci)
+zamestnanci_a = zamestnanci.copy()
+zamestnanci_a.append("Bruno")
+zamestnanci_a.append("Anežka")
+print("Nová jména přidána: ", zamestnanci_a)
+zamestnanci_b = zamestnanci.copy()
+zamestnanci_b.insert(1, "Bruno")
+print("Nová jména vložena: ", zamestnanci_b)
+
+
+#CVIČENÍ 6
+print("="*15, "Cvičení 6 - List, odstraňování hodnot", "="*15)
+kandidati = ['Bruno', 'Anežka']
+zamestnanci = ['František', 'Bruno', 'Anna', 'Jakub', 'Klára']
+bez_bruna = kandidati.copy()
+bez_bruna.remove("Bruno")
+print("Bruno odstraněn: ", bez_bruna)
+opakovani_kandidati = []
+opakovani_kandidati.extend(bez_bruna)       #NEBO by to mohlo být opakovani_kandidati = bez_bruna * 3
+opakovani_kandidati.extend(bez_bruna)
+opakovani_kandidati.extend(bez_bruna)
+print("Opakování kandidáti:", opakovani_kandidati)
+spojeni_zamestnanci = zamestnanci + opakovani_kandidati
+print("Spojeni zaměstnanci: ", spojeni_zamestnanci)
+
+#CVIČENÍ 7
+print("="*15, "Cvičení 7 - První psímeno", "="*15)
+vstupni_cisla = [1, 2, 3, 4, 5, 6, 7]
+vstupni_pismena = ["p", "ú", "s", "č", "p", "s", "n"]
+tyden = ('pondělí', 'úterý', 'středa', 'čtvrtek', 'pátek', 'sobota', 'neděle')
+cislo_dne = 3
+if cislo_dne in vstupni_cisla:
+    print("Správná vstupní hodnota!")
+    den_tydne = tyden[cislo_dne-1]
+    if den_tydne[0] == vstupni_pismena[cislo_dne-1]:
+        print("Správné písmeno")
+    else:
+        print("Špatné písmeno")
+else:
+    print("Špatná vstupní hodnota!")
+
+#CVIČENÍ Z KONCE LEKCE - Hesla
+print("="*15, "Cvičení z konce lekce - hesla", "="*15)
+heslo = input("Zadejte heslo ")
+if heslo == "":
+    print("Vynechal jsi pole s heslem!")
+else:
+    if heslo[0].isdigit():
+        print("Heslo nesmí začínat číselným znakem")
+    else:
+        if heslo.isdigit() or heslo.isalpha():
+            print("Heslo musí obsahovat jak číselné znaky, tak písmena")
+        else:
+            if len(heslo) < 7:
+                print("Heslo musí být alespoň 8 znaků dlouhé")
+            else:
+                if "@" in heslo:
+                    print("Heslo nesmí obsahovat '@'")
+                else:
+                    print("Heslo je v pořádku")
+#šlo by to psát skrze elif místo kaskádu if/else
