@@ -244,7 +244,7 @@ print("Ahoj, Michale) if jmeno == "Michal" else print("ahoj, ostatni)
 
 - datový typ tvořen počtem párů dat
 - pár = "jméno klíče" : jeho hodnota
-- klíče jsou stringy, hodnoty různé
+- klíče jsou stringy, hodnoty různé, musí být zapsaný jako nezměnitelné (nemůže to být tuple nebo druhý slovník...jako hodnota ale jo)
 - lze vytvořit i prádzný
 - lze vytvořit pomocí nazev = {obsah} i pomocí nazev = dict(obsah)
 - hledání hodnot ve slovníku = mapování
@@ -252,3 +252,13 @@ print("Ahoj, Michale) if jmeno == "Michal" else print("ahoj, ostatni)
 - klíče musí být unikátní, jinak se přepíšou
 - jak vložit klíče/hodnoty? dám nazev_slovniku["nazev_klice"] = "hodnota"
 - lze vkládat slovníky do slovníků: vytvořím např. slovník kontakty s nějakým obsahem a pak do např. slovníku info uložím jako info["kontakt"] = kontakty
+- tomu se říká nestování; volám to pak podobně: např. print(info["kontakty"]["telefon"])
+
+<h3> Metody slovníků </h3>
+
+- jako ostatní datové typy i slovníky je mají
+- např. clear, copy, fromkeys, get, items, keys, pop, popitem, setdefault, update, values
+
+<h3> Sety (množiny) </h3>
+
+- 
