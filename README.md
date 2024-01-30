@@ -232,4 +232,23 @@ print("Ahoj, Michale) if jmeno == "Michal" else print("ahoj, ostatni)
 - můžu si je všechny zavolat např. skrze help(datovy_typ), print(dir(str)) nebo OBECNĚ help(datovy_typ.nazev_metody) ... nebo místo str dát list, tuple, int, ... každý datový typ má své metody
 - obecně je dobré si to projít skrz ten help
 
-***V JUPYTERU JE ÚKOL NA ROZLOUČENOU (co má/nemá heslo obsahovat) - UDĚLAT!***
+***V JUPYTERU JE ÚKOL NA ROZLOUČENOU (co má/nemá heslo obsahovat) - DONE***
+
+<h2> LEKCE 3 - Slovníky a množiny (31.1.2024) </h2>
+
+<h3> opakování z minula </h3>
+
+#N/A
+
+<h3> Slovníky </h3>
+
+- datový typ tvořen počtem párů dat
+- pár = "jméno klíče" : jeho hodnota
+- klíče jsou stringy, hodnoty různé
+- lze vytvořit i prádzný
+- lze vytvořit pomocí nazev = {obsah} i pomocí nazev = dict(obsah)
+- hledání hodnot ve slovníku = mapování
+- podobné jak indexování (dáváme do hranatý závorek klíč), ale není tam to pořadí (např. print(slovnik["nazev_klice"]))
+- klíče musí být unikátní, jinak se přepíšou
+- jak vložit klíče/hodnoty? dám nazev_slovniku["nazev_klice"] = "hodnota"
+- lze vkládat slovníky do slovníků: vytvořím např. slovník kontakty s nějakým obsahem a pak do např. slovníku info uložím jako info["kontakt"] = kontakty
