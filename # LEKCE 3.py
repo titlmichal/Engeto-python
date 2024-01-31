@@ -4,15 +4,44 @@ delka_nazvu_lekce = len(nazev_lekce)
 print("="*15, nazev_lekce, "="*15)
 print("-" * (30 + delka_nazvu_lekce + 2),)
 
+print("="*15, "Úkol na rozcvičení", "="*15)
+print("########## ! ! ! DODĚLAT ÚKOL ! ! ! ##########")
+
+
 print("="*15, "Slovníky", "="*15)
 #slovníky
-muj_slovnik = {"jmeno": "Michal", "registrovany": True, "vek": 24}
+muj_slovnik = {
+    "jmeno": "Michal", 
+    "registrovany": True, 
+    "vek": 24
+        }
 print(muj_slovnik)
 print(type(muj_slovnik))
 prazdny_slovnik = {}
 print(type(prazdny_slovnik))
-slovnik_skrze_fci = dict(jmeno = "Michal", vek = 25) #zde KLASICKÉ ZÁVORKY! když je to skrz fci
+slovnik_skrze_fci = dict(jmeno = "Michal", vek = 25) #zde KLASICKÉ ZÁVORKY! když je to skrz fci --> omezí se tím množství možností, co může být klíč
 print(slovnik_skrze_fci)
+slovnik_o_Mazde = {
+    "make" : "Mazda",
+    "model" : "MX-5",
+    "year" : "1999",
+    "colour" : "brilliant black",
+    "engine" : {
+        "displacement" : 1800,
+        "gearbox" : "manual",
+        "odo" : 185_000,                        #skrze ty podtržítka je možné psát dlouhá čísla a oddělovat je pro přehlednost
+    },
+    "state" : {
+        "rust" : "not much",
+        "oil leaks" : "not really",
+        "factory" : "definitelly not",          #tady je dobrý dát čárku, i když je poslední, aby pak další člověk tam neudělal omylem chybu, až to otevře
+    },
+}
+print(slovnik_o_Mazde)
+print(slovnik_o_Mazde["model"])
+print(slovnik_o_Mazde["engine"]["gearbox"])
+print(slovnik_o_Mazde["engine"]["odo"])
+print(slovnik_o_Mazde["state"]["rust"])
 
 #hledání hodnot ve slovníku = mapování
 print(slovnik_skrze_fci["jmeno"], slovnik_skrze_fci["vek"])

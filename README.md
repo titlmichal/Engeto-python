@@ -236,46 +236,116 @@ print("Ahoj, Michale) if jmeno == "Michal" else print("ahoj, ostatni)
 
 <h2> LEKCE 3 - Slovníky a množiny (31.1.2024) </h2>
 
+- btw jak dostat help z konzole?
+- zapnu python
+- a dir(help) pro široký help
+- dir(nazev_objektu) pro možné fce/metody --> zajimá mě to BEZ PODTRŽÍTEK
+- nebo help(nazev_objektu) pro širší/detailnější výpis
+- a pak dak třeba help(nazev_objektu.nazev_metody) pro detail
+
+- btw2 - test driven development
+- basically si ještě před psaním kódu nadefinuju cíle/pravidla a napíšu si pro to podmínky
+
+- btw rozdíl == a is
+- == řeší obsah
+- is řeší i id
+- takže asi lepší to == (minimálně u těch slovníků)
+
+- btw fce .strip() - např. string_se_jmenem.strip() --> odmaže mezery na začátku a konci --> hodí se to na kontrolu hesel apod.
+- btw něco zasapný velkým písmem by se mělo brát jako konstanta a neměli bychom to měnit
+
 <h3> opakování z minula </h3>
 
-#N/A
+- v materiálech je zajímavý odkaz na StackOverflow, kde je vysvětlený aplikovaný rozdíl mezi isdecimal(), isnumber() a isdigital()
+- bool(True + True + True) = 3 ale bool(True and True and True) = True
+
+***V JUPYTERU JE ÚKOL NA ROZCVIČENÍ - UDĚLAT***
 
 <h3> Slovníky </h3>
 
-- datový typ tvořen počtem párů dat
+- datový typ tvořen počtem párů dat (není třeba definovat, je built-in) --> nemusíme řešit, která informace je na které pozici
 - pár = "jméno klíče" : jeho hodnota
-- klíče jsou stringy, hodnoty různé, musí být zapsaný jako nezměnitelné (nemůže to být tuple nebo druhý slovník...jako hodnota ale jo)
-- lze vytvořit i prádzný
+- *(!) nejsou tam indexy* --> nutné dohledávat skrze klíče, ne indexy (jako u tuplů a listů, pokud nějaké to číslo není klíčem)
+- *(!) nemají pořadí*, jakkoliv se to při definování zdá
+- *(!) je změnitelný*
+- klíče jsou *neměnné datové* typy (string, int, tuple apod.) - lze ověřit pomocí pokusu o jeho změnu (při pokusu o změnu chyba --> neměnný --> může být jako klíč), případně skrze fci hash() --> když vrátí číslo a ne chybu --> gut
+- lze vytvořit i prázdný (slovnik = {})
 - lze vytvořit pomocí nazev = {obsah} i pomocí nazev = dict(obsah)
 - hledání hodnot ve slovníku = mapování
-- podobné jak indexování (dáváme do hranatý závorek klíč), ale není tam to pořadí (např. print(slovnik["nazev_klice"]))
-- klíče musí být unikátní, jinak se přepíšou
+- *podobné jak indexování* (dáváme do hranatých závorek klíč), ale není tam to pořadí (např. print(slovnik["nazev_klice"]))
+- plus oproti indexování nelze jít zpět (od hodnoty ke klíči)
+- klíče musí být *unikátní*, jinak se přepíšou (a vypíše se pak ten poslední)
+- hodnoty mohou být de facto cokoliv ... i třeba další slovník (viz nestování níže)
 - jak vložit klíče/hodnoty? dám nazev_slovniku["nazev_klice"] = "hodnota"
 - lze vkládat slovníky do slovníků: vytvořím např. slovník kontakty s nějakým obsahem a pak do např. slovníku info uložím jako info["kontakt"] = kontakty
 - tomu se říká nestování; volám to pak podobně: např. print(info["kontakty"]["telefon"])
+- btw nestovaný slovník může mít klíč z hlavního slovníku (stačí, aby byl unikátní v rámci souboru klíčů hlavního slovníku)
+- v praxi se prý často používají slovníky na kódování slov na čísla (nebo naopak)
+- v praxi taky *requesty chodí jako slovníky - jsou to JSON soubory, které to hážou do slovníků*
+- --> vedle řetězce nejdůležitější datový typ
 
 <h3> Metody slovníků </h3>
 
 - jako ostatní datové typy i slovníky je mají
 - např. clear, copy, fromkeys, get, items, keys, pop, popitem, setdefault, update, values
+- *copy dělá mělkou kopii* --> když tam pak přepisujeme data u zanořený slovníků, tak to udělá u obou --> je třeba udělat kopii hlavního i vnořeného
+- slovnik.keys() --> vrací objekt se všemi definovanými klíči ve slovníku
+- slovnik.values() --> podobný ale pro hodnoty
+- slovnik.items() --> kombinace obou (taky vrací v párech, hodí se to na práci s cykly)
+- ale (aspoň u těhle) tyhle metody dávají výstup, kteří předchazí např. dict_items a hlavně tam *NEFUNGUJE INDEXOVÁNÍ* --> řeší se to přetypováním na list
+- slovnik.get("hledany_klic") --> vrací hodnoty daného klíče, pokud nenajde, tak None nebo to, co si definujeme za čárkou, např. ..get("klic", "není tam")
+- slovnik.clear() --> vymaže celý slovník
+- dict(zip(list1, list2)) --> vytvoří *z 2 listů 1 slovník*
 
 <h3> Sety (množiny) </h3>
 
 - na první pohled podobný slovníku, ale prakticky jiný
 - u slovníků hledání hodnot skrze klíče, u setů hlavně množinové operace (neřeší tolik hodnoty uvnitř)
+- --> na první pohled {} neznamená slovník, rozdíl *je v absenci těch vztahů klíč-hodnota a teda i těch dvojteček*
+- hlavně se hodí na vyhledávání (oproti třeba listům - protože sety/množiny jsou asi 3krát rychlejší)
 - např. set = {"žena", "růže", "píseň"}
 - je to samotný datový typ, hodnoty uvnitř jsou stringy
 - lze vytvořit i prázdný: prazdny_set = set()
 - alternativně set_s_hodnotami = {"hodnota1", "hodnota2", ...}
 - nebo taky změnit existující list/tupl na set
 - takže je měnitelný
-- plus hodnoty jsou UNIKÁTNÍ (!)
+- nemá pořadí
+- plus *hodnoty jsou UNIKÁTNÍ (!) a zachovávají se jen unikátní (nejde tak třeba skrz to počítat výskyty nějakých znaků třeba jako u listů)*
+- --> je dobré tak pro vyhledávání vzít list a přetypovat na set a pak vyhledávat
+- obecně se tak sety hodí na vyhledávání a jejich operace (viz níže)
+
+<h3> Operace nad sety </h3>
+
 - metody setů např.: add, clear, copy, difference, difference_update, discard, intersection, intersection_update, isdisjoint, issubset, issuperset,
 pop, remove, symmetric_difference, symmetric_difference_update, union, update
+- set1.union(set2) --> výsledkem je sloučení obou setů do 1 setu (set --> unikátních hodnot)
+- alternativně jako set1 | set2 (ale moc se to nepoužívá, hlavně na CZ klávesnici je to alt g + W)
+- set1.intersection(set2) --> vrátí průnik obou setů
+- alternativně (set1 & set2)
+- do teď symetrický --> nevadilo prohodit set1 a set2 --> nezáleželo na pořadí; asymetrické --> hraje roli (!)
+- set1.difference(set2) --> odečte od setu1 set2 --> vrátí to, co je v setu1 a není v setu2 AKA *vem set1 a odstraň vše, co se nachází v setu2*
+- alternativně (set1 - set2)
+- když naopak, tak vrátí to, co má unikátní jen set2 (vůči setu1)
+- rozdíl set1 - set2 je logicky prázdná množina
+- set1.symmetric_difference(set2) --> tady na pořadí nezáleží --> vrátí kombinaci (set1 - set2) + (set2 - set1) AKA *co je unikátní pro každou z množin*
+- set.add(prvek_k_přidání) --> přidá 1 definovaný prvek do množiny
+- set.discard(prvek_k_odstranění) --> odstraní 1 definovaný prvek z množiny
+- set1.isdisjoint(set2) --> vrátí pravdu, když jsou oba sety spojené (?)
 
 <h3> Frozen set </h3>
 
-- nezměnitelný set
-- skrze frozentset()
+- nezměnitelný set ("je zmrazený")
+- skrze frozenset() fci --> je to fce, takže třeba fs = frozenset((obsahu_setu))
+- --> jsou tam dvojité závorky, protože jeden pár patří funkci, druhý k zabalení setu (k řečení, že je to set)
 - lze vytvářet ze stringů, ale taky i listů, tuplů a setů (jak sety)
 - metody mají fs podobné jak sety, jen se nedají měnit (takže by to hodilo chybu)
+- použití: 
+1) jako klíč ve slovníku
+2) a hlavně indikátor pro ostatní, že se tohle nemá měnit
+
+<h3> Volitelné argumenty </h3>
+
+- viz jupyter
+- některé fce mají volitelný počet argumentů - třeba print (dávám tam obsah, separátor, konec řádku, ...)
+- a lze tak dále specifikovat/upravovat default nastavení
+- v helpu pythunu je to často daný ... (3 tečkama) v dokumentaci
