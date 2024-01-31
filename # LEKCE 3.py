@@ -105,3 +105,47 @@ else:
 
 print("="*15, "Sety (množiny)", "="*15)
 #Sety (množiny)
+set1 = {"žena", "růže", "píseň"}
+print(set1)
+print(type(set1))
+prazdny_set = set()
+print(type(prazdny_set))                 #tvorba prázdného setu
+set_s_hodnotami = {"Michal", "Titl"}      #tvorba setu s hodnotami
+print(set_s_hodnotami)
+print(type(set_s_hodnotami))
+muj_list = ["mesto", "more", "kure", "staveni"]
+set_z_list = set(muj_list)                #vytvoření setu z existujícího listu
+print(type(set_z_list))
+
+print("="*15, "Metody setů", "="*15)
+#ukázky metod setů
+#sjednocení
+set_a = {"zena", "ruze", "kost", "pisen", "Lucie", "Matous"}
+set_b = {"zena", "ruze", "kost", "pisen", "Lukas"}
+print(set_a.union(set_b))               # Alternativa: print(set_a | set_b)
+#průnik
+print(set_a.intersection(set_b))        # Alternativa: print(set_a & set_b)
+#symetrický rozdíl asi aka disjunkce
+print(set_a.symmetric_difference(set_b)) # Alternativa: print(set_a ^ set_b)
+#rozdíl setu a a b - odečte od setu a set b
+print(set_a.difference(set_b))           # Alternativa: print(set_a - set_b)
+#přidávání a odebírání hodnot
+set_a = {"zena", "ruze", "kost"}
+set_a.add("pisen")                       #add pro přidání jedné hodnoty
+set_a.update(("Michal", "Titl"))         #update pro více --> jsou KULATÉ ZÁVORKY DVAKRÁT!
+print(set_a)
+set_a.discard("Titl")                     #odstranění hodnoty
+print(set_a)
+set_a.pop()                               #pop metoda si vybere sama, co odstraní (!)
+print(set_a)
+print(set("hello"))                       #vytvoří set s UNIKÁTNÍMI hodnotami
+print(set({'jméno':'John', 'přijmení': 'Smith'}))     #vytvoří set s unikátními klíči
+
+print("="*15, "Frozen set" , "="*15)
+#Frozen set
+fs_set = frozenset("Michal")
+print(fs_set)
+print(type(fs_set))
+
+#CVIČENÍ 5
+print("="*15, "Cvičení 4 - Sjednocení setů", "="*15)

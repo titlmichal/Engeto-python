@@ -261,4 +261,21 @@ print("Ahoj, Michale) if jmeno == "Michal" else print("ahoj, ostatni)
 
 <h3> Sety (množiny) </h3>
 
-- 
+- na první pohled podobný slovníku, ale prakticky jiný
+- u slovníků hledání hodnot skrze klíče, u setů hlavně množinové operace (neřeší tolik hodnoty uvnitř)
+- např. set = {"žena", "růže", "píseň"}
+- je to samotný datový typ, hodnoty uvnitř jsou stringy
+- lze vytvořit i prázdný: prazdny_set = set()
+- alternativně set_s_hodnotami = {"hodnota1", "hodnota2", ...}
+- nebo taky změnit existující list/tupl na set
+- takže je měnitelný
+- plus hodnoty jsou UNIKÁTNÍ (!)
+- metody setů např.: add, clear, copy, difference, difference_update, discard, intersection, intersection_update, isdisjoint, issubset, issuperset,
+pop, remove, symmetric_difference, symmetric_difference_update, union, update
+
+<h3> Frozen set </h3>
+
+- nezměnitelný set
+- skrze frozentset()
+- lze vytvářet ze stringů, ale taky i listů, tuplů a setů (jak sety)
+- metody mají fs podobné jak sety, jen se nedají měnit (takže by to hodilo chybu)
