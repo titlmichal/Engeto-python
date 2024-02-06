@@ -349,3 +349,25 @@ pop, remove, symmetric_difference, symmetric_difference_update, union, update
 - některé fce mají volitelný počet argumentů - třeba print (dávám tam obsah, separátor, konec řádku, ...)
 - a lze tak dále specifikovat/upravovat default nastavení
 - v helpu pythunu je to často daný ... (3 tečkama) v dokumentaci
+
+<h2> LEKCE 4 - For cyklus (6.2.2024) </h2>
+
+<h3> For loop </h3>
+
+- aka smyčka, cyklus
+- 2 typy: for, while
+- u for např: for cislo in [1, 2, 3, 4]: print(cislo)
+-   v hranatých závorkách jsou hodnoty proměnné cislo, které bude nabývat --> vypíše postupně 1 2 3 4
+- to v [] je tedy iterovatelný zdroj hodnot, který postupně ukládá do proměnné hodnoty
+- NEiterovatelné datové typy: integer, float
+- iterovatelné datové typy: list, string, tuple, slovník (vrací klíče), set (ale bez pořadí)
+- ohlášení ve smyčkách --> mění chování smyčky
+- break = skončí po dosažení podmínky
+- continue = přeskočí hodnotu při naplnění podmínky
+- pass = zabraná potenciální vyjímce
+- else u loopu for: lze podobně jako u if použít else, když tam mám vnořenou fci if (třeba hledám nějaký znak --> pokud tam není, spustí se else)
+- POZOR: to else je k loopu, ne fci if --> je odsazené stejné jako for
+- vnořené for loops: 
+-   smyčka jde po jednotlivých iterací --> (vnější) udělá první hodnotu ze zadaných a jde na to, co VŠE má zadáno jako další (ve vnitřní loop)
+-   --> když skončí vnitřní loop, jde zpět ke vnějšímu a opakuje ten postup tam-a-zpátky, dokud nedojdou hodnoty (prvně v té vnitřní, pak v té vnější)
+- 
