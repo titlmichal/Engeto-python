@@ -352,22 +352,70 @@ pop, remove, symmetric_difference, symmetric_difference_update, union, update
 
 <h2> LEKCE 4 - For cyklus (6.2.2024) </h2>
 
+<h3> Opakování </h3>
+
+- list je měnitelný, hranaté závorky X tuple je NEměnný, kulaté závorky + tuple lze použít jako klíč ve slovníku (list ne)
+- ve slovníku, když sáhnu po novém klíči a zadám hodnotu --> vznikne nový pár X když jen sáhnu po novém a nedám hodnotu --> error
+- ve slovníku po hodnotě sáhnout místo slovnik["klic"] pomocí slovnik.get("klic") --> první varianta dá chybu (když klíč neexistuje), druhá none, případně specifikovanou hlášku vypíše (např. slovnik.get("klic", "klic neexistuje))
+- btw je dobré si při vytvoření nějaké listu, kde se může opakovat hodně hodnot (např. domény mailu), jej převést na set a pak zpátky na list --> zůstanou jen unikátní hodnoty (+ zpátky to chceme na list, protože se setem se blbě pracuje - nedá se indexovat apod.)
+- btw f-string: print(f"Číslo je {cislo}") a lze tak přímo ve stringu mít proměnnou (případně pak skrze to i formátovat: např. print(f"{cislo=<10}))
+
+<h3> JSON </h3>
+
+- to, co v Pythonu nazýváme slovník, je jinde (hlavně v JS) JSON - JavaScript Object Notation
+- syntax je podobný jak právě u slovníků, případně zanořených slovníků, případně s hodnotami v podobě listů
+- má to nějaké specifika JS, třeba True s malým t (které v Python neexistuje)
+- každopádně když budeme tahat věci z nějakých služeb (asi jsou tím myšlena APIs), tak to bude ve formátu JSON
+- lze to převést do Python pomocí fce get_json("url_služby")
+- plus to ideálně přetypujeme předtím (např. int(get_json(...))) a/nebo upravíme/odstraníme nějaké prvky hodnot např. .replace(",","").replace("-","")
+
 <h3> For loop </h3>
 
 - aka smyčka, cyklus
 - 2 typy: for, while
 - u for např: for cislo in [1, 2, 3, 4]: print(cislo)
 -   v hranatých závorkách jsou hodnoty proměnné cislo, které bude nabývat --> vypíše postupně 1 2 3 4
-- to v [] je tedy iterovatelný zdroj hodnot, který postupně ukládá do proměnné hodnoty
+- v podstatě lze odvodit z výpisu: for prvek in sekvenční_datový_typ: ... --> pro každý prvek v datovém typu udělej ...
+- to v [] je tedy iterovatelný zdroj hodnot, který postupně ukládá do proměnné jeho hodnoty (AKA sekvenční datový typ)
+- může to být přímo samotný list (např. for cisla in (0, 1, 2):...) nebo zastoupené proměnnou, kterou jsem dříve někde uložil (např. for jmena in list_jmen: ...)
+- POZOR: není dobré používat v prvku jméno, co už je definované někde jinde --> zůstane tomu pak ta poslední hodnota z iterovatelného datového typu, který použijeme
 - NEiterovatelné datové typy: integer, float
-- iterovatelné datové typy: list, string, tuple, slovník (vrací klíče), set (ale bez pořadí)
+- iterovatelné datové typy: list, string, tuple, slovník (vrací klíče), set (ale bez pořadí), range
+- zajímavé je to u SLOVNÍKŮ: lze iterovat skrze klíče, hodnoty nebo kombinaci obou (defaultně se prochází dle klíče)
+- pokud bychom chtěli jít po hodnotách, je třeba to říct
 - ohlášení ve smyčkách --> mění chování smyčky
 - break = skončí po dosažení podmínky
 - continue = přeskočí hodnotu při naplnění podmínky
-- pass = zabraná potenciální vyjímce
+- pass = zabraná potenciální vyjímce (vlastně místo chyby tak, aby program pokračoval)
 - else u loopu for: lze podobně jako u if použít else, když tam mám vnořenou fci if (třeba hledám nějaký znak --> pokud tam není, spustí se else)
 - POZOR: to else je k loopu, ne fci if --> je odsazené stejné jako for
 - vnořené for loops: 
 -   smyčka jde po jednotlivých iterací --> (vnější) udělá první hodnotu ze zadaných a jde na to, co VŠE má zadáno jako další (ve vnitřní loop)
 -   --> když skončí vnitřní loop, jde zpět ke vnějšímu a opakuje ten postup tam-a-zpátky, dokud nedojdou hodnoty (prvně v té vnitřní, pak v té vnější)
-- 
+
+<h3> Datový typ range </h3>
+
+- k celočíselným rozsahům (intervalům)
+- skrze fci range()
+- hlavní smysl je ta iterovatelnost (třeba pro fci loop)
+- při printu vypíše jen okrajové, např. range(11) --> range(0, 11)
+- 1 argument --> kdy skončit (poslední hodnota tam není); od nuly
+- 2 --> kdy začít a kdy skončit (včetně začátku)
+- 3 --> začátek, konec, step (po kolika bude skákat)
+- lze používat i ve smyčkách: např. for cisla in range(5): print(cisla)
+- POZOR: abych to vytisknul, potřebuju před range() mít datový typ - třeba list(range())
+
+<h3> Funkce enumerate </h3>
+
+- zabudovaná fce
+- k očíslování iterovatelného objektu, např. list nebo tuple
+- podobně jako u range potřebuju datový typ před to: list(enumerate(cisla))
+- taky často ve smyčkách podobně jako range --> for pismena in enumerate("Ahoj"): print(pismena) --> výsledkem bude tuple s indexem jako prvním a písmenem jako druhým v pořadí (dle indexů) pro každé písmeno
+- pokud chci víc najednou: for index, symbol in enumerate("Ahoj, světe"): print(f"Index: {index}, symbol: {symbol}")
+
+<h3> Funkce ZIP </h3>
+
+- na slepení 2 a víc iterovatelných datových typů
+- pokud je jedno kratší než druhý, tak to druhé bude zkráceno ve výsledku
+- zase se z toho musí udělat ten nějaký list apod --> např. list(zip(datovy_typ_1, datovy_typ_2))
+- výsledkem je tuple
