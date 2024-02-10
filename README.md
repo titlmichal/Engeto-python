@@ -419,3 +419,37 @@ pop, remove, symmetric_difference, symmetric_difference_update, union, update
 - pokud je jedno kratší než druhý, tak to druhé bude zkráceno ve výsledku
 - zase se z toho musí udělat ten nějaký list apod --> např. list(zip(datovy_typ_1, datovy_typ_2))
 - výsledkem je tuple
+
+<h2> LEKCE 5 - While cyklus (14.2.2024) </h2>
+
+- vedle for existuje i while
+- while provádí ohlášení (to, co je pod ní odsazené), dokud bude zadaná podmínka pravdivá (např. while i < 5: i = i +1>)
+- (btw musím si to i definovat před smyčkou, jinak hodí chybu)
+- prostě dokud je TRUE, smyčka jede, jakmile se stane FALSE, smyčka končí
+- použití for <-- když chci projít všechny hodnoty
+- použití while <-- když chci iterovat za určitých podmínek
+- while lze doplnit podmínkou pod tím, taky odsazenou
+- někdy je možné napsat dodatečnou podmínku přímo za while, ALE může se tak stát, že skrze kombinaci True a False neprojde vše (skončí), jak bych chtěl
+- ohlášení podobně jako u for:
+- break: přeskočí zbytek, když je naplněno něco --> typicky se dává do if podvětve
+- continue: VRÁCENÍ NA ZAČÁTEK SMYČKY --> typicky taky pod if podvětev (to pod continue ve stejném bloku se nevykoná a smyčka jede dál)
+- lze taky doplnit else: else se spustí, když je hlavní podmínka FALSE
+- BTW POZOR: BREAK PŘERUŠÍ i část pod else
+
+<h3> Nekonečná smyčka </h3>
+
+- kdy je použít? když chci třeba uživatele nutit zadat validní hodnotu nebo nějaký key word --> bude dokola dotazován, dokud to nedá
+- 2 typy: neřízené X řízené
+- neřízené: to NECHCEME! vzniká při chybě v kódu, když podmínka bude vždy pravdivá (např. while i > 0: i = i + 1 print(i)), ukončuje se pomocí Ctrl + C
+- řízené: viz výše --> taková, kde ji lze přerušit zadáním vhodného vstupu (dělá skrze pomocnou proměnnou, která je pořád True, nebo break pod if)
+
+<h3> Přiřazovací operátor </h3>
+
+- aka walrus operátor (emoji mrože :=)
+- ke spojení dvou kroků v jedném zápise: uloží hodnotu do proměnné A rovnou ji použije (např. print(jmeno := "Matous"))
+- POZOR: walrus musí být v kulaté závorce použit, jinak hodí syntaxError
+- POZOR 2: walrus je dostupný od Pythonu 3.8 a výš
+- lze použít jako operátor v podmínkách (ale opět musí být v závorce)
+- Python to dělá tak, že: 1) vezme/spočítá hodnotu, kterou bude přiřazovat --> 2) přiřadí hodnotu --> 3) použije ji (pokud je to třeba v if clause)
+- (v případě if) --> proto se tam dávají ty závorky, jinak by to zpracoval normálně (prvně vyhodnotil/spočítal a pak přiřadil)
+- lze taky kombinovat se smyčkou while
