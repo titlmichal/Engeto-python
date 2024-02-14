@@ -388,7 +388,7 @@ pop, remove, symmetric_difference, symmetric_difference_update, union, update
 - continue = přeskočí hodnotu při naplnění podmínky
 - pass = zabraná potenciální vyjímce (vlastně místo chyby tak, aby program pokračoval)
 - else u loopu for: lze podobně jako u if použít else, když tam mám vnořenou fci if (třeba hledám nějaký znak --> pokud tam není, spustí se else)
-- POZOR: to else je k loopu, ne fci if --> je odsazené stejné jako for
+- POZOR: to else je k loopu, ne fci if --> je odsazené stejné jako for --> spustí se po ÚSPĚŠNÉM dokončení (bez breaku!) smyčky
 - vnořené for loops: 
 -   smyčka jde po jednotlivých iterací --> (vnější) udělá první hodnotu ze zadaných a jde na to, co VŠE má zadáno jako další (ve vnitřní loop)
 -   --> když skončí vnitřní loop, jde zpět ke vnějšímu a opakuje ten postup tam-a-zpátky, dokud nedojdou hodnoty (prvně v té vnitřní, pak v té vnější)
@@ -422,9 +422,24 @@ pop, remove, symmetric_difference, symmetric_difference_update, union, update
 
 <h2> LEKCE 5 - While cyklus (14.2.2024) </h2>
 
+<h3> opakování z minula </h3>
+
+- for i in zdroj: print(i*2)
+- i je ta proměnná, která bude nabývat hodnoty ze zdroje
+- za dvojtečkou je to, co se stane pro každou hodnotu ze zdroje
+- vždy to, co se má vykonat pro každou hodnotu, musí být odsazené
+- integer (třeba 123) se nedá iterovat --> pro 1 hodnotu nemá smysl iterovat
+- set, list, tuple nebo dictionary či string (který má víc hodnot/znaků) se dá už iterovat
+- ...aka to musí mít délku, aby se tím dalo iterovat --> string "Ahoj" má délku, ale číslo 123 už ne
+- ALE v případě použití range (např. range(10)) už lze použít int jako iterovatelný objekt
+- range(x) dává vždy vždy prvních x hodnot --> např. range(3) = 0 1 2 (ALE už ne 3!)
+
+<h3> While smyčka </h3>
+
 - vedle for existuje i while
 - while provádí ohlášení (to, co je pod ní odsazené), dokud bude zadaná podmínka pravdivá (např. while i < 5: i = i +1>)
-- (btw musím si to i definovat před smyčkou, jinak hodí chybu)
+- (btw musím si to i definovat před smyčkou, jinak hodí chybu --> žejo, jinak nebude vědět, jak ověřit podmínku)
+- btw samozřejmě podmínka může mít víc aspektů (např. i > 5 and i != 3) --> celý výraz musí být true, aby podmínka dál jela
 - prostě dokud je TRUE, smyčka jede, jakmile se stane FALSE, smyčka končí
 - použití for <-- když chci projít všechny hodnoty
 - použití while <-- když chci iterovat za určitých podmínek
@@ -434,6 +449,7 @@ pop, remove, symmetric_difference, symmetric_difference_update, union, update
 - break: přeskočí zbytek, když je naplněno něco --> typicky se dává do if podvětve
 - continue: VRÁCENÍ NA ZAČÁTEK SMYČKY --> typicky taky pod if podvětev (to pod continue ve stejném bloku se nevykoná a smyčka jede dál)
 - lze taky doplnit else: else se spustí, když je hlavní podmínka FALSE
+-
 - BTW POZOR: BREAK PŘERUŠÍ i část pod else
 
 <h3> Nekonečná smyčka </h3>
@@ -450,6 +466,9 @@ pop, remove, symmetric_difference, symmetric_difference_update, union, update
 - POZOR: walrus musí být v kulaté závorce použit, jinak hodí syntaxError
 - POZOR 2: walrus je dostupný od Pythonu 3.8 a výš
 - lze použít jako operátor v podmínkách (ale opět musí být v závorce)
-- Python to dělá tak, že: 1) vezme/spočítá hodnotu, kterou bude přiřazovat --> 2) přiřadí hodnotu --> 3) použije ji (pokud je to třeba v if clause)
+- Python to dělá tak, že: 
+1) vezme/spočítá hodnotu, kterou bude přiřazovat --> 
+2) přiřadí hodnotu --> 
+3) použije ji (pokud je to třeba v if clause)
 - (v případě if) --> proto se tam dávají ty závorky, jinak by to zpracoval normálně (prvně vyhodnotil/spočítal a pak přiřadil)
 - lze taky kombinovat se smyčkou while
