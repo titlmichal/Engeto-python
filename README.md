@@ -433,6 +433,9 @@ pop, remove, symmetric_difference, symmetric_difference_update, union, update
 - ...aka to musí mít délku, aby se tím dalo iterovat --> string "Ahoj" má délku, ale číslo 123 už ne
 - ALE v případě použití range (např. range(10)) už lze použít int jako iterovatelný objekt
 - range(x) dává vždy vždy prvních x hodnot --> např. range(3) = 0 1 2 (ALE už ne 3!)
+- iterable je to, v čem iterujeme (třeba ten list) X iterator je to, čím se iteruje (funkce iter vezme objekt, udělá z něj iterátor (pmocí fce iter()), který má metodu next --> a postupně se volá next(iterator) --> třeba na listu 1 až 3, postupně dá na první příkaz 1, na druhý 2, na třetí 3 a na počtvrté hodí chybu)
+- --> v každé iteraci se sama volá funkce next na aktuální hodnotu (nebo možná vlastně index)
+- --> while by šlo zapsat třeba jako: l_iter = iter([1, 2, 3]...while True: i = next(l_iter) print(i)) --> for cyklus je takový zjednodušený while cyklus
 
 <h3> While smyčka </h3>
 
@@ -448,16 +451,17 @@ pop, remove, symmetric_difference, symmetric_difference_update, union, update
 - ohlášení podobně jako u for:
 - break: přeskočí zbytek, když je naplněno něco --> typicky se dává do if podvětve
 - continue: VRÁCENÍ NA ZAČÁTEK SMYČKY --> typicky taky pod if podvětev (to pod continue ve stejném bloku se nevykoná a smyčka jede dál)
-- lze taky doplnit else: else se spustí, když je hlavní podmínka FALSE
--
+- lze taky doplnit else: else se spustí, když je hlavní podmínka FALSE (a podobně jako u for se nesmí dané while přerušit breakem)
 - BTW POZOR: BREAK PŘERUŠÍ i část pod else
+- BTW break souvisí s nejbližším cyklem --> takže to může být třeba 5krát odsazený od while, tak to zruší NEJBLIŽŠÍ while (--> když tam bude jeden zanořený, tak to prvně zruší zanořený - to, co je nejblíž o úroveň výš)
 
 <h3> Nekonečná smyčka </h3>
 
 - kdy je použít? když chci třeba uživatele nutit zadat validní hodnotu nebo nějaký key word --> bude dokola dotazován, dokud to nedá
 - 2 typy: neřízené X řízené
-- neřízené: to NECHCEME! vzniká při chybě v kódu, když podmínka bude vždy pravdivá (např. while i > 0: i = i + 1 print(i)), ukončuje se pomocí Ctrl + C
-- řízené: viz výše --> taková, kde ji lze přerušit zadáním vhodného vstupu (dělá skrze pomocnou proměnnou, která je pořád True, nebo break pod if)
+- neřízené: to NECHCEME! vzniká při chybě v kódu, když podmínka bude vždy pravdivá (např. while i > 0: i = i + 1 print(i)), ukončuje se pomocí Ctrl + C (v terminálu)
+- ta nekonečná smyčka se stane chybou, pak v praxi pouštím aplikaci a ta se pořád točí...a po 2 hodinách to musím shodit
+- řízené: viz výše --> taková, kde ji lze přerušit zadáním vhodného vstupu (dělá se skrze pomocnou proměnnou, která je pořád True, nebo break pod if)
 
 <h3> Přiřazovací operátor </h3>
 
@@ -472,3 +476,8 @@ pop, remove, symmetric_difference, symmetric_difference_update, union, update
 3) použije ji (pokud je to třeba v if clause)
 - (v případě if) --> proto se tam dávají ty závorky, jinak by to zpracoval normálně (prvně vyhodnotil/spočítal a pak přiřadil)
 - lze taky kombinovat se smyčkou while
+- právě ve while se hodí, protože tam můžu ověřovat ve whilu ten vstup rovnou a nemusím vytvářet prázdnou proměnnou ještě před cyklem:
+- místo: vstup = "" while vstup != q: vstup = input(text)...
+- můžu použít: while (vstup := input(text)) != "q": ...
+
+<h3> Comprehensions </h3>
