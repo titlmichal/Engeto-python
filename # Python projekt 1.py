@@ -79,8 +79,9 @@ if user_name in users and user_password in passwords:
                     pass
 
             data_dict = {
-                "Count of words          :" : capital_start_word,
-                "Count of titlecase words:" : all_capitals_word,
+                "Count of words          :" : word_count,
+                "Count of titlecase words:" : capital_start_word,
+                "Count of uppercase words:" : all_capitals_word,
                 "Count of lowercase words:" : all_lowercase_word,
                 "Count of numeric strings:" : number_words,
                 "Sum of all the numbers  :" : sum_of_number_words
