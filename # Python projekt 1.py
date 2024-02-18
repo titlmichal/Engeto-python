@@ -37,28 +37,26 @@ garpike and stingray are also present.'''
 users = ("bob", "ann", "mike", "liz")
 passwords = ("123", "pass123", "password123", "pass123")
 separator = "-" * 45
+
 print(separator)
 user_name = input("Enter your user name: ")
 user_password = input("Enter your password: ")
 print(separator)
+
 if user_name in users and user_password in passwords:
     if users.index(user_name) == passwords.index(user_password):
-        print(f"Welcome {user_name}!")
+        print(f"Welcome, {user_name}!")
         chosen_text = input("Enter a nr 1, 2 or 3 to select: ")
         print(separator)
         if not chosen_text.isnumeric():
             print("Not a number!")
             print(separator)
-            exit()
         elif int(chosen_text) < 1 or int(chosen_text) > 3:
             print("Entered number is not between 1 and 3!")
             print(separator)
-            exit()
+
         else:
-            # print(f"Chosen text says: {texts[int(chosen_text) - 1]}")
-            # print(separator)
             text_into_words = (texts[int(chosen_text) - 1]).split()
-            # print(text_into_words)
             word_count = 0
             capital_start_word = 0
             all_capitals_word = 0
@@ -79,32 +77,38 @@ if user_name in users and user_password in passwords:
                     sum_of_number_words = sum_of_number_words + int(i)
                 else:
                     pass
-            print(f"Count of word is: {word_count}")
-            print(f"Count of words starting with capital is: {capital_start_word}")
-            print(f"Count of all capital words is: {all_capitals_word}")
-            print(f"Count of all lower-case words is: {all_lowercase_word}")
-            print(f"Count of numeric strings is: {number_words}")
-            print(f"Sum of all the numbers is {sum_of_number_words}")
+
+            data_dict = {
+                "Count of words          :" : capital_start_word,
+                "Count of titlecase words:" : all_capitals_word,
+                "Count of lowercase words:" : all_lowercase_word,
+                "Count of numeric strings:" : number_words,
+                "Sum of all the numbers  :" : sum_of_number_words
+                }
+            for key, value in data_dict.items():
+                print(key, value)
             print(separator)
-            print("LEN | OCCURENCES | NR OF OCCURENCES")
+
+            print("LEN |  OCCURENCES     | NR OF OCCURENCES")
             length_of_word = 0
             for i in text_into_words:
-                length_of_word = len(i)
-                if length_of_word not in word_lengths.keys():
-                    word_lengths[length_of_word] = 1
+                if "." in list(i) or "," in list(i):
+                    length_of_word = len(i) - 1
+                    if length_of_word not in word_lengths.keys():
+                        word_lengths[length_of_word] = 1
+                    else:
+                        word_lengths[length_of_word] = word_lengths.get(length_of_word) + 1
                 else:
-                    word_lengths[length_of_word] = word_lengths.get(length_of_word) + 1
+                    length_of_word = len(i)
+                    if length_of_word not in word_lengths.keys():
+                        word_lengths[length_of_word] = 1
+                    else:
+                        word_lengths[length_of_word] = word_lengths.get(length_of_word) + 1
             word_lengths_sorted = dict(sorted(word_lengths.items()))
             print(separator)
             for key, value in word_lengths_sorted.items():
-                print(str(key).rjust(4), "|", (value * "*").ljust(12), "|", value, sep="")
-            # print(separator)
-            # print(word_lengths_sorted)
+                print(str(key).rjust(4), "|", (value * "*").ljust(17), "|", value, sep="")
     else:
-        print(separator)
         print("Entered name and password dont match!")
-        exit()
 else:
-    print(separator)
     print("Entered name or password doesnt exist!")
-    exit()
