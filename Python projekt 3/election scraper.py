@@ -184,4 +184,99 @@ print("*"*30)
 
 #TAK TEĎ MÁM UŽ DALŠÍ VĚCI V DICTU, SICE JEN PRO JEDNU OBEC ALE MÍSTO INDEXU 0 BYCH POUŽIL i V LOOPU A UDĚLAL TO PRO VŠE
 #TEĎ JE ČAS VYTÁHNOUT VOLEBNÍ VÝSLEDKY - POZOR: TENTOKRÁT BUDOU KLÍČE STRANY A HODNOTY POČET HLASŮ, CO DOSTALY
+#TADY MĚ ZAJÍMAJÍ td class="overflow_name" a td headers="t1sa2 t1sb3" (nebo "t2sa2 t2sb3" pro druhou tabulku)
 
+for x, y in enumerate(vysledky1_obec1):
+    print(f"Tohle je tag číslo {x}, obsahuje: {y}")
+print("*"*30)
+
+vytridena_tabulka1_obec1 = list()
+vytridena_tabulka2_obec1 = list()
+for i in vysledky1_obec1:
+    if "overflow_name" in str(i):
+        vytridena_tabulka1_obec1.append(i)
+for i in vysledky2_obec1:
+    if "overflow_name" in str(i):
+        vytridena_tabulka2_obec1.append(i)
+
+#hledám podle headerů a druhá tabulka má jiný --> používám oddělené seznamy, tj. 2 for loopy
+
+rozsirenejsi_dict_obce1 = rozsireny_dict_obce1.copy()
+print(rozsirenejsi_dict_obce1)
+
+print(vytridena_tabulka1_obec1[0])
+for i in vytridena_tabulka1_obec1:
+    print(i.find("td", {"class": "overflow_name"}).text)
+    print(i.find("td", headers="t1sa2 t1sb3").text)
+    rozsirenejsi_dict_obce1.update({ i.find("td", {"class": "overflow_name"}).text : i.find("td", headers="t1sa2 t1sb3").text})
+for i in vytridena_tabulka2_obec1:
+    print(i.find("td", {"class": "overflow_name"}).text)
+    print(i.find("td", headers="t2sa2 t2sb3").text)
+    rozsirenejsi_dict_obce1.update({ i.find("td", {"class": "overflow_name"}).text : i.find("td", headers="t2sa2 t2sb3").text})
+
+for i in rozsirenejsi_dict_obce1:
+    print(i, rozsirenejsi_dict_obce1[i])
+
+#TAKŽE TEĎ MÁM FINÁLNÍ SLOVNÍK PRO JEDNU OBCI ... JUCHŮŮŮŮ
+#TEĎ TO MUSÍM UPRAVIT TAK, ABY TO DĚLALO PRO KAŽDOU OBCI
+print("*"*30)
+print("ZPRACOVÁVÁM DATA ... VYČKEJTE CHVÍLI")
+rozsirene_dicty_obci = list()
+for i in dicty_obci:
+    odkaz_obec = dicty_obci[dicty_obci.index(i)].get("odkaz")
+    try:
+        odpoved_obec = requests.get(odkaz_obec)
+    except:
+        # print("Error")
+        exit()
+    # else:
+    #     print("not error")
+    # if odpoved_obec.status_code == 200:
+    #     print(odpoved_obec)
+        #print(odpoved.text)
+    # elif odpoved.status_code in range(300, 400):
+    #     print("Chyba přesměrování")
+    # elif odpoved.status_code in range(400, 500):
+    #     print("Chyba klienta")
+    # elif odpoved.status_code in range(500, 600):
+    #     print("Chyba serveru")
+    # else:
+    #     print("NEZNÁMÁ CHYBA!")
+    
+    rozdelena_odpoved_obec = bs(odpoved_obec.text, features="html.parser")
+    # print(rozdelena_odpoved_obec1.prettify())
+    vsechny_tables_obec = rozdelena_odpoved_obec.find_all("table")
+    volici_obec = vsechny_tables_obec[0]
+    vysledky1_obec = vsechny_tables_obec[1]
+    vysledky2_obec = vsechny_tables_obec[2]
+    
+    rozsireny_dict_obce = dicty_obci[dicty_obci.index(i)].copy()
+    rozsireny_dict_obce.update({ "volici" : volici_obec.find("td", headers="sa2").text})
+    rozsireny_dict_obce.update({ "obalky" : volici_obec.find("td", headers="sa3").text})
+    rozsireny_dict_obce.update({ "hlasy" : volici_obec.find("td", headers="sa6").text})
+
+    vytridena_tabulka1_obec = list()
+    vytridena_tabulka2_obec = list()
+    for i in vysledky1_obec:
+        if "overflow_name" in str(i):
+            vytridena_tabulka1_obec.append(i)
+    for i in vysledky2_obec:
+        if "overflow_name" in str(i):
+            vytridena_tabulka2_obec.append(i)
+    
+    rozsirenejsi_dict_obce = rozsireny_dict_obce.copy()
+    for i in vytridena_tabulka1_obec:
+        # print(i.find("td", {"class": "overflow_name"}).text)
+        # print(i.find("td", headers="t1sa2 t1sb3").text)
+        rozsirenejsi_dict_obce.update({ i.find("td", {"class": "overflow_name"}).text : i.find("td", headers="t1sa2 t1sb3").text})
+    for i in vytridena_tabulka2_obec:
+        # print(i.find("td", {"class": "overflow_name"}).text)
+        # print(i.find("td", headers="t2sa2 t2sb3").text)
+        rozsirenejsi_dict_obce.update({ i.find("td", {"class": "overflow_name"}).text : i.find("td", headers="t2sa2 t2sb3").text})
+    
+    rozsirene_dicty_obci.append(rozsirenejsi_dict_obce)
+
+for slovnik in rozsirene_dicty_obci:
+    for par_hodnot in slovnik:
+        print(par_hodnot, slovnik[par_hodnot])
+    print("*"*20)
