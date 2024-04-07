@@ -97,14 +97,20 @@ print("*"*30)
 # for x, y in enumerate(dicty_obci):
 #     print(f"Tohle je dict číslo {x}, obsahuje: {y}")
 
-for i in vytridene_tr:
-    print(str(i)[117:123])       #vrátí číslo obce
-    print(str(i)[181:181+str(i)[181:220].index("<")])       #vrátí název obec
-    print("https://volby.cz/pls/ps2017nss/"+str(i)[str(i).index("<a href=")+9:115])       #vrátí odkaz na detailní výsledky obce
+for i in rozdelena_odpoved:
+    print(rozdelena_odpoved.find("td", {"class": "cislo"}).text)       #vrátí číslo obce
+    print(rozdelena_odpoved.find("td", {"class": "overflow_name"}).text)       #vrátí název obec
+    print("https://volby.cz/pls/ps2017nss/"+rozdelena_odpoved.find("a", href=True).text)       #vrátí odkaz na detailní výsledky obce
     print("*"*30)
     #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     #TADY TOHLE MUSÍM UPRAVIT, PROTOŽE TŘEBA PRO PRAHU TO NEBUDE FUNGOVAT, PROTOŽE JE TAM KRATŠÍ ODKAZ SKRZE KRATŠÍ ČÍSLO KRAJE A TAK
     #MÍSTO TOHO BYCH TO MĚL UDĚLAT, JAK DOLE PRO VÝSLEDKY - ROZDĚLIT NA TABLE DATA A POUŽÍT .text
+    #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    #UPDATE 7.4.2024 21:15: tady jsem se snažil to vyřešit s tím komplikovaným slicingem/strindigem, ale ještě to není ono
+    #resp issue je ten, že 1) for loop hodí 4 Benešov (když to dám na okres Benešov žejo) a 2) mi nejde vytáhntou ten odkaz zatím
+    #měl bych se imo podívat do toho, jak to scrapuju a podle toho upravit/upravit scrapování
+    #nemyslím, že to je těžké, jen už mi teď hlava moc nefunguje i guess :D
+    #good luck next time! <3
     #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 #teď vím, jak si vytáhnout kód, název a odkaz jednotlivých obcí --> TEĎ BYCH Z TOHO UDĚLAL DICT PRO KAŽDOU OBEC VE STYLU "nazev" :nazev_obce, ...
@@ -119,6 +125,10 @@ for i in vytridene_tr:
     dict_obce.update({ "nazev" : str(i)[181:181+str(i)[181:220].index("<")]})
     dict_obce.update({ "odkaz" : "https://volby.cz/pls/ps2017nss/"+str(i)[str(i).index("<a href=")+9:115].replace("amp;", "")})
     dicty_obci.append(dict_obce)
+
+#!!!!!!!!!!!!!!!!!!!!!!!!
+#TADY KONČÍ ZÍSKÁVÁNÍ DICTŮ OBCÍ (KOD, NÁZEV, ODKAZ), NA KTERÝCH PAK STAVÍM ZBYTEK
+#!!!!!!!!!!!!!!!!!!!!!!!!
 
 for x, y in enumerate(dicty_obci):
     print(f"Slovník číslo {x+1} je: {y}")
@@ -220,6 +230,11 @@ for i in rozsirenejsi_dict_obce1:
 #TAKŽE TEĎ MÁM FINÁLNÍ SLOVNÍK PRO JEDNU OBCI ... JUCHŮŮŮŮ
 #TEĎ TO MUSÍM UPRAVIT TAK, ABY TO DĚLALO PRO KAŽDOU OBCI
 print("*"*30)
+
+#!!!!!!!!!!!!!!!!!!!!!!!!
+#TADY NAVAZUJI NA PŮVODNÍ ZÍSKÁVÁNÍ DICTU OBCÍ (kde je zatím jen kód, název a odkaz) a ZÍSKÁVÁM ZDE ZBYTEK DAT
+#!!!!!!!!!!!!!!!!!!!!!!!!
+
 print("ZPRACOVÁVÁM DATA ... VYČKEJTE CHVÍLI")
 rozsirene_dicty_obci = list()
 for i in dicty_obci:
@@ -280,3 +295,12 @@ for slovnik in rozsirene_dicty_obci:
     for par_hodnot in slovnik:
         print(par_hodnot, slovnik[par_hodnot])
     print("*"*20)
+
+#!!!!!!!!!!!!!!!!!!!!!!!!
+#TADY JSEM ZÍSKAL ZBYTEK. VÝSLEDEK NÁHODNÉ VALIDACE: okres Prostějov vypadá GOOOOD
+#!!!!!!!!!!!!!!!!!!!!!!!!
+
+#TEĎ JE ČAS TO HODIT DO CSVéčka!
+#prnvě bych si měl najít nejdelší dict --> TEN BUDE MÍT VŠECHNY STRANY
+for slovnik in rozsirene_dicty_obci:
+    print(len(slovnik), "...", )
