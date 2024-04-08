@@ -97,11 +97,20 @@ print("*"*30)
 # for x, y in enumerate(dicty_obci):
 #     print(f"Tohle je dict číslo {x}, obsahuje: {y}")
 
-for i in rozdelena_odpoved:
-    print(rozdelena_odpoved.find("td", {"class": "cislo"}).text)       #vrátí číslo obce
-    print(rozdelena_odpoved.find("td", {"class": "overflow_name"}).text)       #vrátí název obec
-    print("https://volby.cz/pls/ps2017nss/"+rozdelena_odpoved.find("a", href=True).text)       #vrátí odkaz na detailní výsledky obce
-    print("*"*30)
+tabulky = rozdelena_odpoved.find_all("table", {"class": "table"})
+
+for tabulka in tabulky:
+    for x in tabulka:
+        print(x.find("td", {"class": "cislo"}).text)       #vrátí číslo obce
+        try:
+            print(x.find("td", headers="t1sa1 t1sb2").text)       #vrátí název obec
+        except:
+            try:
+                print(x.find("td", headers="t2sa1 t2sb2").text)
+            except:
+                print(x.find("td", headers="t3sa1 t3sb2").text)
+        print("https://volby.cz/pls/ps2017nss/"+x.find("a", href=True).text)       #vrátí odkaz na detailní výsledky obce
+        print("*"*30)
     #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     #TADY TOHLE MUSÍM UPRAVIT, PROTOŽE TŘEBA PRO PRAHU TO NEBUDE FUNGOVAT, PROTOŽE JE TAM KRATŠÍ ODKAZ SKRZE KRATŠÍ ČÍSLO KRAJE A TAK
     #MÍSTO TOHO BYCH TO MĚL UDĚLAT, JAK DOLE PRO VÝSLEDKY - ROZDĚLIT NA TABLE DATA A POUŽÍT .text
