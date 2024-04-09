@@ -24,20 +24,24 @@ print("*"*30)
 rozdelena_odpoved = bs(odpoved.text, features="html.parser")
 tabulky = rozdelena_odpoved.find_all("table", {"class": "table"})
 
-for tabulka in tabulky:
-    for x in tabulka:
+for tabulka in tabulky:       #tabulky jsou vlastně všechny tables, tj. 1-3 tabulky (dle oblasti), každýá z nich má v sobě řádky (tr)
+    for radek in tabulka:     #každá tabulka ma řádky, kde 1 řádek (který chci) má 3 td - kod, název, X (odkaz)
         try:
-            print(x.find("td", {"class": "cislo"}).text)       #vrátí číslo obce
+            print(radek.find("td", {"class": "cislo"}).text)       #vrátí číslo obce
         except:
             continue
         try:
-            print(x.find("td", headers="t1sa1 t1sb2").text)       #vrátí název obec
+            print(radek.find("td", headers="t1sa1 t1sb2").text)       #vrátí název obec
         except:
                 try:
-                    print(x.find("td", headers="t2sa1 t2sb2").text)     #vrátí název obec (když by byl 2 tabulky obcí)
+                    print(radek.find("td", headers="t2sa1 t2sb2").text)     #vrátí název obec (když by byl 2 tabulky obcí)
                 except:
-                    print(x.find("td", headers="t3sa1 t3sb2").text)     #vrátí název obec (když by byl 3 tabulky obcí)
-        print("https://volby.cz/pls/ps2017nss/"+x.find("a", href=True).text)       #vrátí odkaz na detailní výsledky obce
+                    print(radek.find("td", headers="t3sa1 t3sb2").text)     #vrátí název obec (když by byl 3 tabulky obcí)
+        index1 = str(radek.find("td").contents[0]).index('="')
+        index2 = str(radek.find("td").contents[0]).index('">')
+        print("https://volby.cz/pls/ps2017nss/" + str(radek.find("td").contents[0])[index1:index2].replace("amp;", "").strip('="'))
+                    #vrátí odkaz na detail obce
         print("*"*30)
 
-#TADY TOHLE UŽ VYPADÁ GOOD, JEN POTŘEBA POŘEŠIT TEN ODKAZ!
+#TADY TOHLE UŽ VYPADÁ GOOD, dokonce jsem vytáhnl odkaz na obci!
+#(btw nehledám název obce dle třídy, protože třeba Brno ji nemá!)

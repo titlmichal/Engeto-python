@@ -99,18 +99,50 @@ print("*"*30)
 
 tabulky = rozdelena_odpoved.find_all("table", {"class": "table"})
 
-for tabulka in tabulky:
-    for x in tabulka:
-        print(x.find("td", {"class": "cislo"}).text)       #vrátí číslo obce
+# for tabulka in tabulky:
+#     for x in tabulka:
+#         print(x.find("td", {"class": "cislo"}).text)       #vrátí číslo obce
+#         try:
+#             print(x.find("td", headers="t1sa1 t1sb2").text)       #vrátí název obec
+#         except:
+#             try:
+#                 print(x.find("td", headers="t2sa1 t2sb2").text)
+#             except:
+#                 print(x.find("td", headers="t3sa1 t3sb2").text)
+#         print("https://volby.cz/pls/ps2017nss/"+x.find("a", href=True).text)       #vrátí odkaz na detailní výsledky obce
+#         print("*"*30)
+dicty_obci = list()
+for tabulka in tabulky:       #tabulky jsou vlastně všechny tables, tj. 1-3 tabulky (dle oblasti), každýá z nich má v sobě řádky (tr)
+    for radek in tabulka:     #každá tabulka ma řádky, kde 1 řádek (který chci) má 3 td - kod, název, X (odkaz)
+        dict_obce = {}
         try:
-            print(x.find("td", headers="t1sa1 t1sb2").text)       #vrátí název obec
+            print(radek.find("td", {"class": "cislo"}).text)       #vrátí číslo obce
+            kod_obce = radek.find("td", {"class": "cislo"}).text
+            dict_obce.update({ "kod" : kod_obce})
         except:
-            try:
-                print(x.find("td", headers="t2sa1 t2sb2").text)
-            except:
-                print(x.find("td", headers="t3sa1 t3sb2").text)
-        print("https://volby.cz/pls/ps2017nss/"+x.find("a", href=True).text)       #vrátí odkaz na detailní výsledky obce
+            continue
+        try:
+            print(radek.find("td", headers="t1sa1 t1sb2").text)       #vrátí název obec
+            nazev_obce = radek.find("td", headers="t1sa1 t1sb2").text
+            dict_obce.update({ "nazev" : nazev_obce})
+        except:
+                try:
+                    print(radek.find("td", headers="t2sa1 t2sb2").text)     #vrátí název obec (když by byl 2 tabulky obcí)
+                    nazev_obce = radek.find("td", headers="t1sa1 t1sb2").text
+                    dict_obce.update({ "nazev" : nazev_obce})
+                except:
+                    print(radek.find("td", headers="t3sa1 t3sb2").text)     #vrátí název obec (když by byl 3 tabulky obcí)
+                    nazev_obce = radek.find("td", headers="t1sa1 t1sb2").text
+                    dict_obce.update({ "nazev" : nazev_obce})
+        index1 = str(radek.find("td").contents[0]).index('="')
+        index2 = str(radek.find("td").contents[0]).index('">')
+        print("https://volby.cz/pls/ps2017nss/" + str(radek.find("td").contents[0])[index1:index2].replace("amp;", "").strip('="'))
+                    #vrátí odkaz na detail obce
+        odkaz_obce = "https://volby.cz/pls/ps2017nss/" + str(radek.find("td").contents[0])[index1:index2].replace("amp;", "").strip('="')
+        dict_obce.update({ "odkaz" : odkaz_obce})
+        dicty_obci.append(dict_obce)
         print("*"*30)
+print(dicty_obci)
     #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     #TADY TOHLE MUSÍM UPRAVIT, PROTOŽE TŘEBA PRO PRAHU TO NEBUDE FUNGOVAT, PROTOŽE JE TAM KRATŠÍ ODKAZ SKRZE KRATŠÍ ČÍSLO KRAJE A TAK
     #MÍSTO TOHO BYCH TO MĚL UDĚLAT, JAK DOLE PRO VÝSLEDKY - ROZDĚLIT NA TABLE DATA A POUŽÍT .text
@@ -127,13 +159,13 @@ for tabulka in tabulky:
 #po zpracování dat z odkazu ještě musím vymyslet, jak s tím naložím (přidat nová data k původním slovníku z listu X vytvořit nový?)
 #asi bych SPÍŠ VYTVOŘIL NOVÝ Z KOPIE PŮVODNÍHO --> budu mít list dictů, který "jen" dictWriterem zapíšu
 
-dicty_obci = list()
-for i in vytridene_tr:
-    dict_obce = {}
-    dict_obce.update({ "kod" : str(i)[117:123]})
-    dict_obce.update({ "nazev" : str(i)[181:181+str(i)[181:220].index("<")]})
-    dict_obce.update({ "odkaz" : "https://volby.cz/pls/ps2017nss/"+str(i)[str(i).index("<a href=")+9:115].replace("amp;", "")})
-    dicty_obci.append(dict_obce)
+# dicty_obci = list()
+# for i in vytridene_tr:
+#     dict_obce = {}
+#     dict_obce.update({ "kod" : str(i)[117:123]})
+#     dict_obce.update({ "nazev" : str(i)[181:181+str(i)[181:220].index("<")]})
+#     dict_obce.update({ "odkaz" : "https://volby.cz/pls/ps2017nss/"+str(i)[str(i).index("<a href=")+9:115].replace("amp;", "")})
+#     dicty_obci.append(dict_obce)
 
 #!!!!!!!!!!!!!!!!!!!!!!!!
 #TADY KONČÍ ZÍSKÁVÁNÍ DICTŮ OBCÍ (KOD, NÁZEV, ODKAZ), NA KTERÝCH PAK STAVÍM ZBYTEK
