@@ -109,3 +109,61 @@ for tabulka in tabulky:       #tabulky jsou vlastně všechny tables, tj. 1-3 ta
             #proto používám ty indexexy, abych to vytáhl ze stringu tagu kódu obce a očistil
         dict_obce.update({ "odkaz" : odkaz_obce})
         dicty_obci.append(dict_obce)
+
+print("ZPRACOVÁVÁM DATA ... VYČKEJTE CHVÍLI")
+#ten loop dole trvá dlouho, takže proto tahle zpráva
+#každopádně tohle je ten 2. velký krok (ve scrapování), kde připojím zbytek dat, resp. nakopíruju původní, který rozšířím --> proto ten list níže
+rozsirene_dicty_obci = list()
+for obec in dicty_obci:                                            #jeden dict = jedna obec --> každé i = jedna obec
+    odkaz_obec = dicty_obci[dicty_obci.index(obec)].get("odkaz")   #vyšlu get request na odkaz v daném dictu obec z listu dictů obcí
+    try:
+        odpoved_obec = requests.get(odkaz_obec)
+    except:
+        print("Error")
+        exit()
+    
+    rozdelena_odpoved_obec = bs(odpoved_obec.text, features="html.parser")  #pomocí BS rozparceluju odpověď
+    vsechny_tables_obec = rozdelena_odpoved_obec.find_all("table")          #zajímají mě jen tabulky, takže stáhnu je
+    volici_obec = vsechny_tables_obec[0]                                    #první tabulka jsou vždy obecné výsledky (voliči, obálky atd.)
+    vysledky1_obec = vsechny_tables_obec[1]                                 #druhá a třetí jsou pak výsledky samotných stran
+    vysledky2_obec = vsechny_tables_obec[2]                                 #naštěstí jsou v seznamu, i když dostanou 0, a seznam má vždy 2 tabulky
+    
+    rozsireny_dict_obce = dicty_obci[dicty_obci.index(obec)].copy()                             #zde vyrobím kopii dictu dané obce
+    rozsireny_dict_obce.update({ "volici" : volici_obec.find("td", headers="sa2").text})        #a tadyy do něj dosypu voliče
+    rozsireny_dict_obce.update({ "obalky" : volici_obec.find("td", headers="sa3").text})        #...obálky
+    rozsireny_dict_obce.update({ "hlasy" : volici_obec.find("td", headers="sa6").text})         #... a hlasy
+
+    vytridena_tabulka1_obec = list()                #protože mám 2 tabulky výsledků stran, tak to dělám dvakrát všechno
+    vytridena_tabulka2_obec = list()                #možná by to šlo udělat hezčím způsobem, ale tohle mi nepřijde až tak hrozný ... idk
+    for radek in vysledky1_obec:
+        if "overflow_name" in str(radek):               #každopádně tady se koukám, jestli ve stringu řádku je overflow_name (název třídy pro název strany)
+            vytridena_tabulka1_obec.append(radek)       #pokud je, tak přidám řádek do vytříděného listu řádků s výsledky
+    for radek in vysledky2_obec:
+        if "overflow_name" in str(radek):
+            vytridena_tabulka2_obec.append(radek)
+    
+    rozsirenejsi_dict_obce = rozsireny_dict_obce.copy() #v rozšířeném dictu obce už jsem ty hlasy, obálky a tak --> teď kopie pro výsledky stran
+    for radek in vytridena_tabulka1_obec:               #a opět nadvakrát, protože v druhé tabulce jsou jiné headers
+        rozsirenejsi_dict_obce.update({radek.find("td", {"class": "overflow_name"}).text : radek.find("td", headers="t1sa2 t1sb3").text})
+    for radek in vytridena_tabulka2_obec:
+        rozsirenejsi_dict_obce.update({radek.find("td", {"class": "overflow_name"}).text : radek.find("td", headers="t2sa2 t2sb3").text})
+                                                        #for loop vždy bere název strany jako klíč a počet hlasů jako hodnotu --> pak appendne
+    
+    rozsirene_dicty_obci.append(rozsirenejsi_dict_obce) #tady už pak kompletní dict obce hodím do listu kompletních dictů obcí
+
+for slovnik in rozsirene_dicty_obci:
+    for par_hodnot in slovnik:
+        print(par_hodnot, slovnik[par_hodnot])
+    print("*"*20)
+# TOHLE SI TU NA TESTOVÁNÍ JEŠTĚ NECHÁM
+
+klice_dictu = list(rozsirene_dicty_obci[0].keys())  #tady z toho dělám líst, protože keys() nevrací indexovatelný objekt
+klice = klice_dictu[0:len(klice_dictu)]  #délka začína sice od 1 (indexy od 0), ale slicing nebere tu druhou krajní hodnotu (proto tam není -1)
+with open(f"{jmeno_souboru}", newline="", mode="w") as file:
+    zapisovac = csv.DictWriter(file, fieldnames=klice, delimiter=";")
+    zapisovac.writeheader()
+    for obec in rozsirene_dicty_obci:
+        zapisovac.writerow(obec)
+print("*" * 30)
+print("OBCE ZAPSÁNY DO CSV")
+#PO VALIDACÍCH RŮZNÝCH OBLASTÍ DO VYPADÁ FUNKČNĚ --> ČAS TO PŘEPSAT DO FUNKCÍ!
