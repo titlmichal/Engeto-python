@@ -14,10 +14,10 @@ Stále mějte aktivované virtuální prostředí a zadejte 'python "election sc
 <h3> Příklady vhodných příkazů </h3>
 
 python "election scraper.py" "https://volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=13&xnumnuts=7204" "Zlín.csv"
-... stáhne výsledky z oblasti Zlína a zapíše je do souboru Zlín.csv
+... stáhne výsledky z obcí oblasti Zlína a zapíše je do souboru Zlín.csv
 
 python "election scraper.py" "https://volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumnuts=7103" "Prostějov.csv"
-... stáhne výsledky z oblasti Prostějova a zapíše je do souboru Prostějov.csv
+... stáhne výsledky z obcí oblasti Prostějova a zapíše je do souboru Prostějov.csv
 
 <h3> Příklady nevhodných příkazů </h3>
 
@@ -25,7 +25,7 @@ python "election scraper.py" "Zlín.csv" "https://volby.cz/pls/ps2017nss/ps32?xj
 ...pořadí argumentů název cílového souboru a zdrojového odkazu je opačné
 
 python "election scraper.py" "https://volby.cz/pls/ps2017nss/ps311?xjazyk=CZ&xkraj=1" "Praha.csv"
-...odkaz (pod kódem oblasti, zde CZ0100) odkazuje na výsledky celé oblasti, na jejíž zpracování není skript připraven
+...odkaz (pod kódem oblasti, zde CZ0100) odkazuje na výsledky oblasti jako celku, na jejíž zpracování není skript připraven
 
 python "election scraper.py" "https://volby.cz/pls/ps2017nss/ps31?xjazyk=CZ&xkraj=1&xnumnuts=1100" "Praha.csv"
 ...odkaz (pod 'X' ve sloupci 'Výběr PM') odkazuje na výsledky dle přebíracího místa, na jejichž zpracování není skript připraven
