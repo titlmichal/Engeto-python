@@ -1,5 +1,5 @@
 """
-projekt_2.py: druhý projekt do Engeto Online Python Akademie (Bulls & Cows)
+projekt_3.py: druhý projekt do Engeto Online Python Akademie (Bulls & Cows)
 author: Michal Titl
 email: titlmichal@gmail.com
 discord: Michal_T
@@ -8,7 +8,6 @@ import sys
 import requests
 from bs4 import BeautifulSoup as bs
 import csv
-import pandas as pd
 
 
 #GAMEPLAN JAK NA TO PŮJDU
